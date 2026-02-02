@@ -1,0 +1,5 @@
+{
+    "params": [
+		{"name": "Full", "type": "Bool", "defaultValue": true}
+    ]
+}

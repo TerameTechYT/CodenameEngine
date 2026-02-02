@@ -1,6 +1,7 @@
 <!DOCTYPE codename-engine-week>
-<week name="HATING SIMULATOR FT. MOAWLING" chars="senpai,bf,gf" sprite="week6">
-	<song>Senpai</song>
-	<song>Roses</song>
-	<song hide="true">Thorns</song>
+<week name="SPECIAL KOMBAT WITH THE THIRD OF HIS KIND" chars="shaggy_green,bf,gf" sprite="week6">
+	<song>Astral Calamity</song>
+	<difficulty name="easy"/>
+	<difficulty name="canon"/>
+	<difficulty name="mania"/>
 </week>

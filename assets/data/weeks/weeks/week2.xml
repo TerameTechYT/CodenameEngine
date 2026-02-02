@@ -1,6 +1,9 @@
 <!DOCTYPE codename-engine-week>
-<week name="SPOOKY MONTH" chars="spooky,bf,gf" sprite="week2">
-	<song>Spookeez</song>
-	<song>South</song>
-	<song hide="true">Monster</song>
+<week name="THE REMATCH" chars="shaggy,bf,gf" sprite="week2">
+	<song>Whats New</song>
+	<song>Blast</song>
+	<song hide="true">Super Saiyan</song>
+	<difficulty name="easy"/>
+	<difficulty name="canon"/>
+	<difficulty name="mania"/>
 </week>

@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character sprite="shaggy_phantom" icon="shaggy_phantom" color="#144800" holdTime="6.1">
+	<anim name="idle" anim="phantom_idle0" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="phantom_left" x="344" y="-49" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="phantom_down" x="106" y="-207" fps="24" loop="false"/>
+	<anim name="singUP" anim="phantom_up" x="87" y="257" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="phantom_right" x="35" y="-86" fps="24" loop="false"/>
+</character>

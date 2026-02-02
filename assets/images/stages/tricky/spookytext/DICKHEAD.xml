@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="DICKHEAD.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="DICKHEAD instance 10000" x="0" y="0" width="148" height="5" frameX="-247" frameY="-153" frameWidth="625" frameHeight="296"/>
+	<SubTexture name="DICKHEAD instance 10001" x="148" y="0" width="449" height="296" frameX="-82" frameY="0" frameWidth="625" frameHeight="296"/>
+	<SubTexture name="DICKHEAD instance 10002" x="597" y="0" width="517" height="172" frameX="-47" frameY="-88" frameWidth="625" frameHeight="296"/>
+	<SubTexture name="DICKHEAD instance 10003" x="1114" y="0" width="513" height="156" frameX="-59" frameY="-95" frameWidth="625" frameHeight="296"/>
+	<SubTexture name="DICKHEAD instance 10004" x="0" y="296" width="513" height="157" frameX="-54" frameY="-97" frameWidth="625" frameHeight="296"/>
+	<SubTexture name="DICKHEAD instance 10005" x="513" y="296" width="512" height="151" frameX="-61" frameY="-93" frameWidth="625" frameHeight="296"/>
+	<SubTexture name="DICKHEAD instance 10006" x="1025" y="296" width="514" height="162" frameX="-63" frameY="-98" frameWidth="625" frameHeight="296"/>
+	<SubTexture name="DICKHEAD instance 10007" x="0" y="458" width="510" height="146" frameX="-59" frameY="-101" frameWidth="625" frameHeight="296"/>
+	<SubTexture name="DICKHEAD instance 10008" x="510" y="458" width="621" height="101" frameX="-4" frameY="-143" frameWidth="625" frameHeight="296"/>
+	<SubTexture name="DICKHEAD instance 10009" x="1131" y="458" width="625" height="44" frameX="0" frameY="-175" frameWidth="625" frameHeight="296"/>
+	<SubTexture name="DICKHEAD instance 10010" x="1756" y="458" width="1" height="1" frameX="-709" frameY="-11" frameWidth="625" frameHeight="296"/>
+</TextureAtlas>

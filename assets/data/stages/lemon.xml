@@ -1,0 +1,4 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.65" name="lemon" folder="stages/lemon/" startCamPosY="400" startCamPosX="600">
+	<sprite name="bg" x="-400" y="-160" sprite="bg_lemon" scale="1.7"/>
+</stage>

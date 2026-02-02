@@ -1,0 +1,24 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.65" name="sky" folder="stages/sky/" startCamPosY="400" startCamPosX="600">
+	<sprite name="bg" x="-850" y="-850" sprite="god_bg" anim="idle" type="none" scale="0.8" scrollx="0.1" scrolly="0.1">
+		<anim name="idle" anim="bg" fps="30" type="loop" />
+	</sprite>
+
+	<sprite name="small_cloud" x="-850" y="-1250" sprite="god_bg" anim="idle" type="none" scrollx="0.3" scrolly="0.3">
+		<anim name="idle" anim="cloud_smol" fps="30" type="loop" />
+	</sprite>
+
+	<sprite name="big_cloud" x="-1150" y="-2900" sprite="god_bg" anim="idle" type="none" scrollx="0.9" scrolly="0.9">
+		<anim name="idle" anim="cloud_big" fps="30" type="loop" />
+	</sprite>
+
+	<sprite name="gf_rock" x="700" y="-1700" sprite="god_bg" anim="idle" type="none" scale="1.3">
+		<anim name="idle" anim="gf_rock" fps="30" type="loop" />
+	</sprite>
+
+	<sprite name="bf_rock" x="-500" y="-1700" sprite="god_bg" anim="idle" type="none">
+		<anim name="idle" anim="rock" fps="30" type="loop" />
+	</sprite>
+
+	<sprite name="bg_lemon" x="0" y="0" sprite="bg_lemon" scale="1.5"/>
+</stage>

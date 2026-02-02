@@ -1,0 +1,15 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.56" name="hell" folder="stages/hell/" startCamPosY="400" startCamPosX="600">
+	<sprite name="bg" x="-1940" y="-1112" sprite="BGBG" scrollx="0.5" scrolly="0.5" />
+
+	<sprite name="lava" x="-1770" y="168" sprite="LavaLimits" scrollx="0.55" scrolly="0.55" />
+
+	<sprite name="spikes1" x="112" y="-36" sprite="BGSpikes" scrollx="0.6" scrolly="0.6" />
+
+	<sprite name="spikes2" x="-1186" y="-234" sprite="Spikes" scrollx="0.8" scrolly="0.8" />
+
+	<sprite name="ground" x="-1320" y="650" sprite="Ground" scale="1.5"/>
+
+	<girlfriend x="600" y="200" />
+	<boyfriend x="1050" y="230" />
+</stage>

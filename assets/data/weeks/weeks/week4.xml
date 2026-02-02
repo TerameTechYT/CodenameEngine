@@ -1,6 +1,10 @@
 <!DOCTYPE codename-engine-week>
-<week name="MOMMY MUST MURDER" chars="mom,bf,gf" sprite="week4">
-	<song>Satin Panties</song>
-	<song>High</song>
-	<song>MILF</song>
+<week name="CRUEL REVELATION" chars="shaggy_matt,bf,gf" sprite="week4">
+	<song>Power Link</song>
+	<song>Revenge</song>
+	<song hide="true">Final Destination</song>
+
+	<difficulty name="easy"/>
+	<difficulty name="canon"/>
+	<difficulty name="mania"/>
 </week>

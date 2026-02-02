@@ -1,7 +1,3 @@
-# THIS FILE ISN'T NECESSARY,
-# BUT YOU CAN USE IT TO SORT WEEKS
-
-tutorial
 week1
 week2
 week3

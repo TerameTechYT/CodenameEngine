@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="INVALID.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="INVALID instance 10000" x="0" y="0" width="118" height="5" frameX="-248" frameY="-142" frameWidth="511" frameHeight="285"/>
+	<SubTexture name="INVALID instance 10001" x="118" y="0" width="363" height="285" frameX="-83" frameY="0" frameWidth="511" frameHeight="285"/>
+	<SubTexture name="INVALID instance 10002" x="481" y="0" width="412" height="166" frameX="-48" frameY="-77" frameWidth="511" frameHeight="285"/>
+	<SubTexture name="INVALID instance 10003" x="0" y="285" width="408" height="153" frameX="-60" frameY="-86" frameWidth="511" frameHeight="285"/>
+	<SubTexture name="INVALID instance 10004" x="408" y="285" width="408" height="155" frameX="-55" frameY="-85" frameWidth="511" frameHeight="285"/>
+	<SubTexture name="INVALID instance 10005" x="0" y="440" width="407" height="150" frameX="-62" frameY="-83" frameWidth="511" frameHeight="285"/>
+	<SubTexture name="INVALID instance 10006" x="407" y="440" width="409" height="158" frameX="-64" frameY="-87" frameWidth="511" frameHeight="285"/>
+	<SubTexture name="INVALID instance 10007" x="0" y="598" width="405" height="146" frameX="-60" frameY="-90" frameWidth="511" frameHeight="285"/>
+	<SubTexture name="INVALID instance 10008" x="405" y="598" width="507" height="95" frameX="-4" frameY="-138" frameWidth="511" frameHeight="285"/>
+	<SubTexture name="INVALID instance 10009" x="0" y="744" width="511" height="38" frameX="0" frameY="-170" frameWidth="511" frameHeight="285"/>
+	<SubTexture name="INVALID instance 10010" x="511" y="744" width="1" height="1" frameX="98" frameY="182" frameWidth="511" frameHeight="285"/>
+</TextureAtlas>

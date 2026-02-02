@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="IMPROBABLE.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="IMPROBABLE instance 10000" x="0" y="0" width="184" height="5" frameX="-247" frameY="-168" frameWidth="760" frameHeight="311"/>
+	<SubTexture name="IMPROBABLE instance 10001" x="184" y="0" width="549" height="311" frameX="-82" frameY="0" frameWidth="760" frameHeight="311"/>
+	<SubTexture name="IMPROBABLE instance 10002" x="733" y="0" width="638" height="178" frameX="-48" frameY="-103" frameWidth="760" frameHeight="311"/>
+	<SubTexture name="IMPROBABLE instance 10003" x="1371" y="0" width="634" height="159" frameX="-60" frameY="-107" frameWidth="760" frameHeight="311"/>
+	<SubTexture name="IMPROBABLE instance 10004" x="0" y="311" width="634" height="159" frameX="-55" frameY="-112" frameWidth="760" frameHeight="311"/>
+	<SubTexture name="IMPROBABLE instance 10005" x="634" y="311" width="633" height="153" frameX="-62" frameY="-106" frameWidth="760" frameHeight="311"/>
+	<SubTexture name="IMPROBABLE instance 10006" x="1267" y="311" width="636" height="165" frameX="-64" frameY="-113" frameWidth="760" frameHeight="311"/>
+	<SubTexture name="IMPROBABLE instance 10007" x="0" y="476" width="632" height="146" frameX="-59" frameY="-116" frameWidth="760" frameHeight="311"/>
+	<SubTexture name="IMPROBABLE instance 10008" x="632" y="476" width="756" height="107" frameX="-4" frameY="-152" frameWidth="760" frameHeight="311"/>
+	<SubTexture name="IMPROBABLE instance 10009" x="0" y="622" width="760" height="50" frameX="0" frameY="-184" frameWidth="760" frameHeight="311"/>
+	<SubTexture name="IMPROBABLE instance 10010" x="760" y="622" width="1" height="1" frameX="-557" frameY="359" frameWidth="760" frameHeight="311"/>
+</TextureAtlas>

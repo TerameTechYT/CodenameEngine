@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.8" name="hills" folder="stages/hills/" startCamPosY="400" startCamPosX="600">
+	<sprite name="bg" x="-1204" y="-456" sprite="sky" scrollx="0.15" scrolly="0.15" scale="1"/>
+
+	<sprite name="clouds" x="-998" y="-260" sprite="clouds" scrollx="0.25" scrolly="0.25" scale="1"/>
+
+	<sprite name="mountain1" x="-700" y="-40" sprite="backmount" scrollx="0.4" scrolly="0.4" scale="1"/>
+
+	<sprite name="mountain2" x="-240" y="200" sprite="middlemount" scrollx="0.6" scrolly="0.6" scale="1"/>
+
+	<sprite name="ground" x="-660" y="624" sprite="Ground" scale="1"/>
+</stage>

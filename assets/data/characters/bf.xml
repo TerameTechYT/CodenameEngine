@@ -1,18 +1,14 @@
 <!DOCTYPE codename-engine-character>
-<character y="350" sprite="bf" flipX="true" isPlayer="true" icon="bf" color="#31B0D1">
-	<anim name="idle" anim="BF idle dance" x="-5" y="0" fps="24" loop="false"/>
-	<anim name="singUP" anim="BF NOTE UP0" x="-39" y="27" fps="24" loop="false"/>
-	<anim name="singLEFT" anim="BF NOTE LEFT0" x="6" y="-7" fps="24" loop="false"/>
-	<anim name="singRIGHT" anim="BF NOTE RIGHT0" x="-48" y="-6" fps="24" loop="false"/>
-	<anim name="singDOWN" anim="BF NOTE DOWN0" x="-17" y="-50" fps="24" loop="false"/>
-	<anim name="singUPmiss" anim="BF NOTE UP MISS" x="-35" y="27" fps="24" loop="false"/>
-	<anim name="singLEFTmiss" anim="BF NOTE LEFT MISS" x="6" y="19" fps="24" loop="false"/>
-	<anim name="singRIGHTmiss" anim="BF NOTE RIGHT MISS" x="-44" y="22" fps="24" loop="false"/>
-	<anim name="singDOWNmiss" anim="BF NOTE DOWN MISS" x="-16" y="-19" fps="24" loop="false"/>
-	<anim name="hey" anim="BF HEY" x="-3" y="6" fps="24" loop="false"/>
-	<anim name="scared" anim="BF idle shaking" x="-6" y="1" fps="24" loop="true"/>
-	<anim name="hit" anim="BF hit" x="13" y="19" fps="24" loop="false"/>
-	<anim name="pre-attack" anim="bf pre attack" x="-47" y="-36" fps="24" loop="false"/>
-	<anim name="attack" anim="boyfriend attack" x="289" y="270" fps="24" loop="false"/>
-	<anim name="dodge" anim="boyfriend dodge" x="-8" y="-13" fps="24" loop="false"/>
+<character x="100" y="300" icon="bf" sprite="bf" color="#31B0D1" flipX="true" isPlayer="true">
+	<anim x="0" loop="false" y="0" fps="24" anim="bf idle instance 10" name="idle"/>
+	<anim x="-38" loop="false" y="1" fps="24" anim="bf left instance 10" name="singRIGHT"/>
+	<anim x="-7" loop="false" y="-43" fps="24" anim="bf down instance 10" name="singDOWN"/>
+	<anim x="-6" loop="false" y="44" fps="24" anim="bf up instance 10" name="singUP"/>
+	<anim x="53" loop="false" y="-1" fps="24" anim="bf rightt instance 10" name="singLEFT"/>
+	<anim x="-29" loop="false" y="47" fps="24" anim="bf left miss instance 1" name="singRIGHTmiss"/>
+	<anim x="-15" loop="false" y="7" fps="24" anim="bf down miss instance 1" name="singDOWNmiss"/>
+	<anim x="-7" loop="false" y="76" fps="24" anim="bf up miss instance 1" name="singUPmiss"/>
+	<anim x="52" loop="false" y="52" fps="24" anim="bf rightt miss instance 1" name="singLEFTmiss"/>
+	<anim x="-33" loop="false" y="37" fps="24" anim="DODGE instance 1" name="dodge"/>
+	<anim x="-21" loop="false" y="35" fps="24" anim="bf hit instance 1" name="hurt"/>
 </character>

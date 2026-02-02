@@ -1,0 +1,16 @@
+<!DOCTYPE codename-mod-credits>
+<!-- TEMPLATE FOR CUSTOM CREDITS!!! -->
+<menu name="Shaggy Mod Credits" desc="Credits for original creators of the shaggy mod!">
+	<!-- \/ You can also set the portrait shader as false as you can see below in the github one -->
+	<credit name="srPerez"  icon="perez" desc="Coder, Main artist and animator, Main composer, Co-charter" size="100" url="https://twitter.com/NewSrPerez" color="#FF9E00"/>
+	<credit name="MORO"  icon="moro" desc="Artist and animator of WB Shaggy sprites, and Chapter 5 cutscene" size="100" url="https://twitter.com/Moro0986" color="#7027AD"/>
+	<credit name="Pointy"  icon="pointy" desc="Co-Charter and Betatester" size="100" url="https://twitter.com/PointyyESM" color="#28389D"/>
+	<credit name="Saruky"  icon="saruky" desc="Composer of 'Thunderstorm'" size="100" url="hhttps://twitter.com/Saruky__" color="#DA0837"/>
+	<credit name="Joan Atlas"  icon="tono" desc="Composer of 'Dissasembler'" size="100" url="https://twitter.com/joan_atlas" color="#543BC9"/>
+
+    <!-- ["srPerez", "perez", "Coder, Main artist & animator, Main composer, Co-charter", "https://twitter.com/NewSrPerez", 0xFFFF9E00],
+    ["MORO", "moro", "Artist & animator of WB Shaggy sprites\n& Chapter 5 cutscene", "https://twitter.com/Moro0986", 0xFF7027AD],
+    ["Pointy", "pointy", "Co-Charter, Betatester", "https://twitter.com/PointyyESM", 0xFF28389D],
+    ["Saruky", "saruky", "Composer of "Thunderstorm"", "https://twitter.com/Saruky__", 0xFFDA0837],
+    ["Joan Atlas", "tono", "Composer of "Dissasembler"", "https://twitter.com/joan_atlas", 0xFF543BC9],!-->
+</menu>

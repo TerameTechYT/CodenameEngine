@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.9" name="boxing" folder="stages/boxing/">
+	<sprite name="bg" x="-250" y="-500" sprite="bg_boxn" scrollx="0.8" scrolly="0.8"/>
+	<sprite name="bg_r" x="-250" y="-700" sprite="bg_boxr" scale="1.2"/>
+
+	<girlfriend x="600" y="-100"/>
+	<boyfriend x="1050" y="-150"/>
+</stage>

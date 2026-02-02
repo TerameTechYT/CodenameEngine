@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="MISTAKE.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="MISTAKE instance 10000" x="0" y="0" width="129" height="5" frameX="-248" frameY="-147" frameWidth="553" frameHeight="290"/>
+	<SubTexture name="MISTAKE instance 10001" x="129" y="0" width="395" height="290" frameX="-83" frameY="0" frameWidth="553" frameHeight="290"/>
+	<SubTexture name="MISTAKE instance 10002" x="524" y="0" width="450" height="168" frameX="-48" frameY="-82" frameWidth="553" frameHeight="290"/>
+	<SubTexture name="MISTAKE instance 10003" x="0" y="290" width="446" height="155" frameX="-60" frameY="-90" frameWidth="553" frameHeight="290"/>
+	<SubTexture name="MISTAKE instance 10004" x="446" y="290" width="446" height="156" frameX="-55" frameY="-90" frameWidth="553" frameHeight="290"/>
+	<SubTexture name="MISTAKE instance 10005" x="0" y="446" width="445" height="151" frameX="-62" frameY="-87" frameWidth="553" frameHeight="290"/>
+	<SubTexture name="MISTAKE instance 10006" x="445" y="446" width="448" height="159" frameX="-64" frameY="-92" frameWidth="553" frameHeight="290"/>
+	<SubTexture name="MISTAKE instance 10007" x="0" y="605" width="443" height="146" frameX="-60" frameY="-95" frameWidth="553" frameHeight="290"/>
+	<SubTexture name="MISTAKE instance 10008" x="443" y="605" width="548" height="97" frameX="-5" frameY="-141" frameWidth="553" frameHeight="290"/>
+	<SubTexture name="MISTAKE instance 10009" x="0" y="751" width="553" height="40" frameX="0" frameY="-173" frameWidth="553" frameHeight="290"/>
+	<SubTexture name="MISTAKE instance 10010" x="553" y="751" width="1" height="1" frameX="-804" frameY="166" frameWidth="553" frameHeight="290"/>
+</TextureAtlas>

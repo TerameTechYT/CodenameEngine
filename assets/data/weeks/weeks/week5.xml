@@ -1,6 +1,9 @@
 <!DOCTYPE codename-engine-week>
-<week name="RED SNOW" chars="parents-christmas,bf,gf" sprite="week5">
-	<song>Cocoa</song>
-	<song>Eggnog</song>
-	<song hide="true">Winter Horrorland</song>
+<week name="BONUS MATCH" chars="shaggy_red,bf,gf" sprite="week5">
+	<song>Soothing Power</song>
+	<song>Thunderstorm</song>
+	<song hide="true">Dissasembler</song>
+	<difficulty name="easy"/>
+	<difficulty name="canon"/>
+	<difficulty name="mania"/>
 </week>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="spike_1.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Spike_1 instance 10000" x="2" y="2" width="26" height="6" frameX="-310" frameY="-604" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10001" x="2" y="2" width="26" height="6" frameX="-310" frameY="-604" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10002" x="33" y="2" width="139" height="63" frameX="-242" frameY="-584" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10003" x="177" y="2" width="403" height="242" frameX="-176" frameY="-468" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10004" x="177" y="2" width="403" height="242" frameX="-176" frameY="-468" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10005" x="585" y="2" width="405" height="738" frameX="-155" frameY="0" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10006" x="995" y="2" width="513" height="738" frameX="-47" frameY="0" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10007" x="2" y="745" width="537" height="738" frameX="-23" frameY="0" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10008" x="544" y="745" width="541" height="725" frameX="-4" frameY="-11" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10009" x="1090" y="745" width="584" height="725" frameX="0" frameY="-11" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10010" x="2" y="1488" width="422" height="722" frameX="-155" frameY="-14" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10011" x="429" y="1488" width="421" height="722" frameX="-155" frameY="-14" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10012" x="855" y="1488" width="385" height="722" frameX="-155" frameY="-14" frameWidth="584" frameHeight="738"/>
+	<SubTexture name="Spike_1 instance 10013" x="855" y="1488" width="385" height="722" frameX="-155" frameY="-14" frameWidth="584" frameHeight="738"/>
+</TextureAtlas>

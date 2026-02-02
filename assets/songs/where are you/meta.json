@@ -1,0 +1,16 @@
+{
+	"customValues": {},
+	"color": "#9271FD",
+	"opponentModeAllowed": false,
+	"difficulties": [
+		"canon",
+		"easy"
+	],
+	"icon": "shaggy",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Where are you",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 150
+}

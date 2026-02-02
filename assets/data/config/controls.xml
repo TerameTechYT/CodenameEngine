@@ -1,0 +1,83 @@
+<!DOCTYPE controls-data>
+<binds>
+	<!-- 1 Key -->
+	<category name="1 Key">
+		<key name="1k0" saveName="1k0" keyP1="space" />
+	</category>
+
+	<!-- 2 Key -->
+	<category name="2 Key">
+		<key name="2k0" saveName="2k0" keyP1="d" />
+		<key name="2k1" saveName="2k1" keyP1="k" />
+	</category>
+
+	<!-- 3 Key -->
+	<category name="3 Key">
+		<key name="3k0" saveName="3k0" keyP1="d" />
+		<key name="3k1" saveName="3k1" keyP1="space" />
+		<key name="3k2" saveName="3k2" keyP1="k" />
+	</category>
+
+	<!-- 4 Key -->
+	<category name="4 Key">
+		<key name="4k0" saveName="4k0" keyP1="d" />
+		<key name="4k1" saveName="4k1" keyP1="f" />
+		<key name="4k2" saveName="4k2" keyP1="j" />
+		<key name="4k3" saveName="4k3" keyP1="k" />
+	</category>
+
+	<!-- 5 Key -->
+	<category name="5 Key">
+		<key name="5k0" saveName="5k0" keyP1="d" />
+		<key name="5k1" saveName="5k1" keyP1="f" />
+		<key name="5k2" saveName="5k2" keyP1="space" />
+		<key name="5k3" saveName="5k3" keyP1="j" />
+		<key name="5k4" saveName="5k4" keyP1="k" />
+	</category>
+
+	<!-- 6 Key -->
+	<category name="6 Key">
+		<key name="6k0" saveName="6k0" keyP1="s" />
+		<key name="6k1" saveName="6k1" keyP1="d" />
+		<key name="6k2" saveName="6k2" keyP1="f" />
+		<key name="6k3" saveName="6k3" keyP1="j" />
+		<key name="6k4" saveName="6k4" keyP1="k" />
+		<key name="6k5" saveName="6k5" keyP1="l" />
+	</category>
+
+	<!-- 7 Key -->
+	<category name="7 Key">
+		<key name="7k0" saveName="7k0" keyP1="s" />
+		<key name="7k1" saveName="7k1" keyP1="d" />
+		<key name="7k2" saveName="7k2" keyP1="f" />
+		<key name="7k3" saveName="7k3" keyP1="space" />
+		<key name="7k4" saveName="7k4" keyP1="j" />
+		<key name="7k5" saveName="7k5" keyP1="k" />
+		<key name="7k6" saveName="7k6" keyP1="l" />
+	</category>
+
+	<!-- 8 Key -->
+	<category name="8 Key">
+		<key name="8k0" saveName="8k0" keyP1="a" />
+		<key name="8k1" saveName="8k1" keyP1="s" />
+		<key name="8k2" saveName="8k2" keyP1="d" />
+		<key name="8k3" saveName="8k3" keyP1="f" />
+		<key name="8k4" saveName="8k4" keyP1="h" />
+		<key name="8k5" saveName="8k5" keyP1="j" />
+		<key name="8k6" saveName="8k6" keyP1="k" />
+		<key name="8k7" saveName="8k7" keyP1="l" />
+	</category>
+
+	<!-- 9 Key -->
+	<category name="9 Key">
+		<key name="9k0" saveName="9k0" keyP1="a" />
+		<key name="9k1" saveName="9k1" keyP1="s" />
+		<key name="9k2" saveName="9k2" keyP1="d" />
+		<key name="9k3" saveName="9k3" keyP1="f" />
+		<key name="9k4" saveName="9k4" keyP1="space" />
+		<key name="9k5" saveName="9k5" keyP1="h" />
+		<key name="9k6" saveName="9k6" keyP1="j" />
+		<key name="9k7" saveName="9k7" keyP1="k" />
+		<key name="9k8" saveName="9k8" keyP1="l" />
+	</category>
+</binds>

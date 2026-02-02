@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Hotdog guy.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="hotdog guy instance 10000" x="2" y="2" width="924" height="1039" frameX="0" frameY="-3" frameWidth="924" frameHeight="1042"/>
+	<SubTexture name="hotdog guy instance 10001" x="2" y="2" width="924" height="1039" frameX="0" frameY="-3" frameWidth="924" frameHeight="1042"/>
+	<SubTexture name="hotdog guy instance 10002" x="931" y="2" width="924" height="1042"/>
+	<SubTexture name="hotdog guy instance 10003" x="931" y="2" width="924" height="1042"/>
+	<SubTexture name="hotdog guy instance 10004" x="1860" y="2" width="924" height="1042"/>
+	<SubTexture name="hotdog guy instance 10005" x="2789" y="2" width="923" height="1042" frameX="0" frameY="0" frameWidth="924" frameHeight="1042"/>
+	<SubTexture name="hotdog guy instance 10006" x="2" y="1049" width="923" height="1042" frameX="0" frameY="0" frameWidth="924" frameHeight="1042"/>
+	<SubTexture name="hotdog guy instance 10007" x="2" y="1049" width="923" height="1042" frameX="0" frameY="0" frameWidth="924" frameHeight="1042"/>
+	<SubTexture name="hotdog guy instance 10008" x="930" y="1049" width="923" height="1042" frameX="0" frameY="0" frameWidth="924" frameHeight="1042"/>
+	<SubTexture name="hotdog guy instance 10009" x="930" y="1049" width="923" height="1042" frameX="0" frameY="0" frameWidth="924" frameHeight="1042"/>
+	<SubTexture name="hotdog guy instance 10010" x="930" y="1049" width="923" height="1042" frameX="0" frameY="0" frameWidth="924" frameHeight="1042"/>
+	<SubTexture name="hotdog guy instance 10011" x="1858" y="1049" width="923" height="1042" frameX="0" frameY="0" frameWidth="924" frameHeight="1042"/>
+	<SubTexture name="hotdog guy instance 10012" x="1858" y="1049" width="923" height="1042" frameX="0" frameY="0" frameWidth="924" frameHeight="1042"/>
+	<SubTexture name="hotdog guy instance 10013" x="1858" y="1049" width="923" height="1042" frameX="0" frameY="0" frameWidth="924" frameHeight="1042"/>
+</TextureAtlas>

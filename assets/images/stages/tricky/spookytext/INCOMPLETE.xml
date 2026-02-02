@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="INCOMPLETE.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="INCOMPLETE instance 10000" x="0" y="0" width="179" height="4" frameX="-246" frameY="-165" frameWidth="735" frameHeight="308"/>
+	<SubTexture name="INCOMPLETE instance 10001" x="179" y="0" width="530" height="308" frameX="-82" frameY="0" frameWidth="735" frameHeight="308"/>
+	<SubTexture name="INCOMPLETE instance 10002" x="709" y="0" width="615" height="176" frameX="-48" frameY="-100" frameWidth="735" frameHeight="308"/>
+	<SubTexture name="INCOMPLETE instance 10003" x="1324" y="0" width="612" height="157" frameX="-59" frameY="-105" frameWidth="735" frameHeight="308"/>
+	<SubTexture name="INCOMPLETE instance 10004" x="0" y="308" width="612" height="158" frameX="-54" frameY="-109" frameWidth="735" frameHeight="308"/>
+	<SubTexture name="INCOMPLETE instance 10005" x="612" y="308" width="610" height="151" frameX="-62" frameY="-104" frameWidth="735" frameHeight="308"/>
+	<SubTexture name="INCOMPLETE instance 10006" x="1222" y="308" width="613" height="165" frameX="-64" frameY="-109" frameWidth="735" frameHeight="308"/>
+	<SubTexture name="INCOMPLETE instance 10007" x="0" y="473" width="610" height="146" frameX="-59" frameY="-112" frameWidth="735" frameHeight="308"/>
+	<SubTexture name="INCOMPLETE instance 10008" x="610" y="473" width="731" height="106" frameX="-4" frameY="-149" frameWidth="735" frameHeight="308"/>
+	<SubTexture name="INCOMPLETE instance 10009" x="0" y="619" width="735" height="49" frameX="0" frameY="-181" frameWidth="735" frameHeight="308"/>
+	<SubTexture name="INCOMPLETE instance 10010" x="0" y="0" width="1" height="1" frameX="-153" frameY="-109" frameWidth="735" frameHeight="308"/>
+</TextureAtlas>

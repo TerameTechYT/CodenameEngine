@@ -1,6 +1,9 @@
 <!DOCTYPE codename-engine-week>
-<week name="DADDY DEAREST" chars="dad,bf,gf" sprite="week1">
-	<song>Bopeebo</song>
-	<song>Fresh</song>
-	<song>Dadbattle</song>
+<week name="FIRST ENCOUNTER" chars="shaggy,bf,gf" sprite="week1">
+	<song>Where Are You</song>
+	<song>Eruption</song>
+	<song hide="true">Kaio Ken</song>
+	<difficulty name="easy"/>
+	<difficulty name="canon"/>
+	<difficulty name="mania"/>
 </week>

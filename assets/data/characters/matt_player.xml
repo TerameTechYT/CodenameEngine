@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character y="300" sprite="matt" icon="matt" color="#3389FF" isPlayer="true">
+	<anim name="idle" anim="matt idle" x="0" y="70" fps="24" loop="false"/>
+	<anim name="singUP" anim="matt up new" x="-1" y="77" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="matt left new" x="30" y="-5" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="matt right new" x="-7" y="7" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="matt down new" x="12" y="-26" fps="24" loop="false"/>
+	<anim name="singUPmiss" anim="matt up miss" x="-13" y="80" fps="24" loop="false"/>
+	<anim name="singLEFTmiss" anim="matt left miss" x="43" y="-4" fps="24" loop="false"/>
+	<anim name="singRIGHTmiss" anim="matt right miss" x="22" y="3" fps="24" loop="false"/>
+	<anim name="singDOWNmiss" anim="matt down miss" x="40" y="-29" fps="24" loop="false"/>
+</character>

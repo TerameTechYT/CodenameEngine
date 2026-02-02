@@ -1,6 +1,7 @@
 <!DOCTYPE codename-engine-week>
-<week name="PICO" chars="pico,bf,gf" sprite="week3">
-	<song>Pico</song>
-	<song>Philly Nice</song>
-	<song>Blammed</song>
+<week name="ULTIMATE DESTRUCTION" chars="shaggy_god" sprite="week3">
+	<song>GOD EATER</song>
+	<difficulty name="easy"/>
+	<difficulty name="canon"/>
+	<difficulty name="mania"/>
 </week>

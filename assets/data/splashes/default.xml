@@ -1,19 +1,76 @@
 <!DOCTYPE codename-engine-splashes>
 <splashes sprite="game/splashes/default" alpha="0.6">
-	<strum id="0"> <!-- LEFT -->
-		<anim name="splashleft1" anim="note impact 1 purple" fps="24" x="0" y="0" />
-		<anim name="splashleft2" anim="note impact 2 purple" fps="24" x="0" y="0" />
+	<strum id="0"> <!-- left -->
+		<anim name="left" anim="note splash left0" fps="24" x="0" y="0" />
 	</strum>
-	<strum id="1"> <!-- DOWN -->
-		<anim name="splashdown1" anim="note impact 1 blue" fps="24" x="0" y="0" />
-		<anim name="splashdown2" anim="note impact 2 blue" fps="24" x="0" y="0" />
+
+	<strum id="1"> <!-- down -->
+		<anim name="down" anim="note splash down0" fps="24" x="0" y="0" />
 	</strum>
-	<strum id="2"> <!-- UP -->
-		<anim name="splashup1" anim="note impact 1 green" fps="24" x="0" y="0" />
-		<anim name="splashup2" anim="note impact 2 green" fps="24" x="0" y="0" />
+
+	<strum id="2"> <!-- up -->
+		<anim name="up" anim="note splash up0" fps="24" x="0" y="0" />
 	</strum>
-	<strum id="3"> <!-- RIGHT -->
-		<anim name="splashright1" anim="note impact 1 red" fps="24" x="0" y="0" />
-		<anim name="splashright2" anim="note impact 2 red" fps="24" x="0" y="0" />
+
+	<strum id="3"> <!-- right -->
+		<anim name="right" anim="note splash right0" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="4"> <!-- square -->
+		<anim name="square" anim="note splash square0" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="5"> <!-- left2 -->
+		<anim name="left2" anim="note splash left20" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="6"> <!-- down2 -->
+		<anim name="down2" anim="note splash down20" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="7"> <!-- up2 -->
+		<anim name="up2" anim="note splash up20" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="8"> <!-- right2 -->
+		<anim name="right2" anim="note splash right20" fps="24" x="0" y="0" />
+	</strum>
+
+	<!--  -->
+
+	<strum id="9"> <!-- rleft -->
+		<anim name="rleft" anim="note splash rleft0" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="10"> <!-- rdown -->
+		<anim name="rdown" anim="note splash rdown0" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="11"> <!-- rup -->
+		<anim name="rup" anim="note splash rup0" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="12"> <!-- rright -->
+		<anim name="rright" anim="note splash rright0" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="13"> <!-- plus -->
+		<anim name="plus" anim="note splash plus0" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="14"> <!-- rleft2 -->
+		<anim name="rleft2" anim="note splash rleft20" fps="24" x="0" y="0" />
+	</strum>
+
+	<strum id="15"> <!-- rdown2 -->
+		<anim name="rdown2" anim="note splash rdown20" fps="24" x="0" y="0" />
+	</strum>
+	
+	<strum id="16"> <!-- rup2 -->
+		<anim name="rup2" anim="note splash rup20" fps="24" x="0" y="0" />
+	</strum>
+	
+	<strum id="17"> <!-- rright2 -->
+		<anim name="rright2" anim="note splash rright20" fps="24" x="0" y="0" />
 	</strum>
 </splashes>

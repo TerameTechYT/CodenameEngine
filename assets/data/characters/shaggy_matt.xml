@@ -1,0 +1,10 @@
+<!DOCTYPE codename-engine-character>
+<character sprite="shaggy_red" icon="shaggy_matt" color="#D11818" holdTime="6.1" y="-300" x="300" camy="150">
+	<anim name="idle" anim="shaggy_idle0" x="0" y="0" fps="30" loop="false"/>
+	<anim name="stand" anim="shaggy_stand0" x="33" y="0" fps="30" loop="false"/>
+	<anim name="sit" anim="shaggy_sit0" x="29" y="-218" fps="30" loop="false"/>
+	<anim name="singLEFT" anim="shaggy_left" x="165" y="-114" fps="30" loop="false"/>
+	<anim name="singDOWN" anim="shaggy_down" x="-10" y="-160" fps="30" loop="false"/>
+	<anim name="singUP" anim="shaggy_up" x="-16" y="27" fps="30" loop="false"/>
+	<anim name="singRIGHT" anim="shaggy_right" x="-1" y="-38" fps="30" loop="false"/>
+</character>

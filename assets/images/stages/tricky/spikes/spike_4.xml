@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="spike_4.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Spike_4 instance 10000" x="2" y="2" width="32" height="14" frameX="-399" frameY="-610" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10001" x="39" y="2" width="352" height="155" frameX="-193" frameY="-581" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10002" x="39" y="2" width="352" height="155" frameX="-193" frameY="-581" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10003" x="396" y="2" width="530" height="341" frameX="-171" frameY="-418" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10004" x="396" y="2" width="530" height="341" frameX="-171" frameY="-418" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10005" x="931" y="2" width="530" height="759" frameX="-171" frameY="0" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10006" x="1466" y="2" width="643" height="774" frameX="-87" frameY="0" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10007" x="2" y="781" width="788" height="764" frameX="0" frameY="-10" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10008" x="795" y="781" width="735" height="764" frameX="-87" frameY="-10" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10009" x="2" y="1550" width="765" height="760" frameX="-87" frameY="-14" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10010" x="772" y="1550" width="786" height="760" frameX="-87" frameY="-14" frameWidth="873" frameHeight="774"/>
+	<SubTexture name="Spike_4 instance 10011" x="1563" y="1550" width="643" height="760" frameX="-87" frameY="-14" frameWidth="873" frameHeight="774"/>
+</TextureAtlas>

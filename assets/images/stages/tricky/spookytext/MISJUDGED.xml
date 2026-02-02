@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="MISJUDGED.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="MISJUDGED instance 10000" x="0" y="0" width="167" height="4" frameX="-247" frameY="-162" frameWidth="692" frameHeight="305"/>
+	<SubTexture name="MISJUDGED instance 10001" x="167" y="0" width="499" height="305" frameX="-82" frameY="0" frameWidth="692" frameHeight="305"/>
+	<SubTexture name="MISJUDGED instance 10002" x="666" y="0" width="577" height="175" frameX="-47" frameY="-96" frameWidth="692" frameHeight="305"/>
+	<SubTexture name="MISJUDGED instance 10003" x="1243" y="0" width="573" height="157" frameX="-59" frameY="-102" frameWidth="692" frameHeight="305"/>
+	<SubTexture name="MISJUDGED instance 10004" x="0" y="305" width="573" height="158" frameX="-54" frameY="-105" frameWidth="692" frameHeight="305"/>
+	<SubTexture name="MISJUDGED instance 10005" x="573" y="305" width="571" height="152" frameX="-62" frameY="-100" frameWidth="692" frameHeight="305"/>
+	<SubTexture name="MISJUDGED instance 10006" x="1144" y="305" width="574" height="164" frameX="-64" frameY="-106" frameWidth="692" frameHeight="305"/>
+	<SubTexture name="MISJUDGED instance 10007" x="0" y="469" width="570" height="146" frameX="-59" frameY="-109" frameWidth="692" frameHeight="305"/>
+	<SubTexture name="MISJUDGED instance 10008" x="570" y="469" width="688" height="104" frameX="-4" frameY="-148" frameWidth="692" frameHeight="305"/>
+	<SubTexture name="MISJUDGED instance 10009" x="1258" y="469" width="692" height="48" frameX="0" frameY="-180" frameWidth="692" frameHeight="305"/>
+	<SubTexture name="MISJUDGED instance 10010" x="1950" y="469" width="1" height="1" frameX="279" frameY="372" frameWidth="692" frameHeight="305"/>
+</TextureAtlas>
