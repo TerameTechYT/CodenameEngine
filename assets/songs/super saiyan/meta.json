@@ -1,0 +1,17 @@
+{
+	"customValues": {},
+	"color": "#9271FD",
+	"opponentModeAllowed": false,
+	"difficulties": [
+		"canon",
+		"easy",
+		"mania"
+	],
+	"icon": "shaggy_super",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Super Saiyan",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 220
+}

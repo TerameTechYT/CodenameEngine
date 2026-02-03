@@ -1,0 +1,16 @@
+{
+	"customValues": {},
+	"color": "#9271FD",
+	"opponentModeAllowed": false,
+	"difficulties": [
+		"canon",
+		"easy"
+	],
+	"icon": "shaggy_green",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Astral Calamity",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 199
+}

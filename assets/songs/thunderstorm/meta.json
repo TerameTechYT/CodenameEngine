@@ -1,0 +1,17 @@
+{
+	"customValues": {},
+	"color": "#9271FD",
+	"opponentModeAllowed": false,
+	"icon": "shaggy_red",
+	"difficulties": [
+		"canon",
+		"easy",
+		"mania"
+	],
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Thunderstorm",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"bpm": 196
+}

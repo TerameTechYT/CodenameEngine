@@ -1,0 +1,15 @@
+{
+	"opponentModeAllowed": false,
+	"difficulties": [
+		"canon",
+		"easy"
+	],
+	"icon": "shaggy_red",
+	"coopAllowed": false,
+	"color": "#9271FD",
+	"stepsPerBeat": 4,
+	"displayName": "Soothing Power",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 185
+}

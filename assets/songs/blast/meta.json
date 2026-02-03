@@ -1,0 +1,16 @@
+{
+	"opponentModeAllowed": false,
+	"difficulties": [
+		"canon",
+		"easy",
+		"mania"
+	],
+	"icon": "shaggy_super",
+	"coopAllowed": false,
+	"color": "#9271FD",
+	"stepsPerBeat": 4,
+	"displayName": "Blast",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 195
+}

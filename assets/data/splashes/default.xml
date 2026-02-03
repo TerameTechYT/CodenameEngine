@@ -65,12 +65,183 @@
 	<strum id="15"> <!-- rdown2 -->
 		<anim name="rdown2" anim="note splash rdown20" fps="24" x="0" y="0" />
 	</strum>
-	
+
 	<strum id="16"> <!-- rup2 -->
 		<anim name="rup2" anim="note splash rup20" fps="24" x="0" y="0" />
 	</strum>
-	
+
 	<strum id="17"> <!-- rright2 -->
 		<anim name="rright2" anim="note splash rright20" fps="24" x="0" y="0" />
 	</strum>
+
+	<!-- 1 Key -->
+	<group id="0">
+		<strum id="0"> <!-- square -->
+			<anim name="square" anim="note splash square0" fps="24" x="0" y="0" />
+		</strum>
+	</group>
+
+	<!-- 2 Key -->
+	<group id="1">
+		<strum id="0"> <!-- left -->
+			<anim name="left" anim="note splash left0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="1"> <!-- right -->
+			<anim name="right" anim="note splash right0" fps="24" x="0" y="0" />
+		</strum>
+	</group>
+
+	<!-- 3 Key -->
+	<group id="2">
+		<strum id="0"> <!-- left -->
+			<anim name="left" anim="note splash left0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="1"> <!-- square -->
+			<anim name="square" anim="note splash square0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="2"> <!-- right -->
+			<anim name="right" anim="note splash right0" fps="24" x="0" y="0" />
+		</strum>
+	</group>
+
+	<!-- 4 Key -->
+	<group id="3">
+		<strum id="0"> <!-- left -->
+			<anim name="left" anim="note splash left0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="1"> <!-- down -->
+			<anim name="down" anim="note splash down0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="2"> <!-- up -->
+			<anim name="up" anim="note splash up0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="3"> <!-- right -->
+			<anim name="right" anim="note splash right0" fps="24" x="0" y="0" />
+		</strum>
+	</group>
+
+	<!-- 5 Key -->
+	<group id="4">
+		<strum id="0"> <!-- left -->
+			<anim name="left" anim="note splash left0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="1"> <!-- down -->
+			<anim name="down" anim="note splash down0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="2"> <!-- square -->
+			<anim name="square" anim="note splash square0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="3"> <!-- up -->
+			<anim name="up" anim="note splash up0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="4"> <!-- right -->
+			<anim name="right" anim="note splash right0" fps="24" x="0" y="0" />
+		</strum>
+	</group>
+
+	<!-- 6 Key -->
+	<group id="5">
+		<strum id="0"> <!-- left -->
+			<anim name="left" anim="note splash left0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="1"> <!-- up -->
+			<anim name="up" anim="note splash up0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="2"> <!-- right -->
+			<anim name="right" anim="note splash right0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="3"> <!-- left2 -->
+			<anim name="left2" anim="note splash left20" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="4"> <!-- down -->
+			<anim name="down" anim="note splash down0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="5"> <!-- right2 -->
+			<anim name="right2" anim="note splash right20" fps="24" x="0" y="0" />
+		</strum>
+	</group>
+
+	<!-- 7 Key -->
+	<group id="6">
+		<strum id="0"> <!-- left -->
+			<anim name="left" anim="note splash left0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="1"> <!-- up -->
+			<anim name="up" anim="note splash up0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="2"> <!-- right -->
+			<anim name="right" anim="note splash right0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="3"> <!-- square -->
+			<anim name="square" anim="note splash square0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="4"> <!-- left2 -->
+			<anim name="left2" anim="note splash left20" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="5"> <!-- down -->
+			<anim name="down" anim="note splash down0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="6"> <!-- right2 -->
+			<anim name="right2" anim="note splash right20" fps="24" x="0" y="0" />
+		</strum>
+	</group>
+
+	<!-- 8 Key -->
+	<group id="7">
+		<strum id="0"> <!-- left -->
+			<anim name="left" anim="note splash left0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="1"> <!-- down -->
+			<anim name="down" anim="note splash down0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="2"> <!-- up -->
+			<anim name="up" anim="note splash up0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="3"> <!-- right -->
+			<anim name="right" anim="note splash right0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="4"> <!-- left2 -->
+			<anim name="left2" anim="note splash left20" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="5"> <!-- down2 -->
+			<anim name="down2" anim="note splash down20" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="6"> <!-- up2 -->
+			<anim name="up2" anim="note splash up20" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="7"> <!-- right2 -->
+			<anim name="right2" anim="note splash right20" fps="24" x="0" y="0" />
+		</strum>
+	</group>
+
+	<!-- 9 Key -->
+	<group id="8">
+		<strum id="0"> <!-- left -->
+			<anim name="left" anim="note splash left0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="1"> <!-- down -->
+			<anim name="down" anim="note splash down0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="2"> <!-- up -->
+			<anim name="up" anim="note splash up0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="3"> <!-- right -->
+			<anim name="right" anim="note splash right0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="4"> <!-- square -->
+			<anim name="square" anim="note splash square0" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="5"> <!-- left2 -->
+			<anim name="left2" anim="note splash left20" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="6"> <!-- down2 -->
+			<anim name="down2" anim="note splash down20" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="7"> <!-- up2 -->
+			<anim name="up2" anim="note splash up20" fps="24" x="0" y="0" />
+		</strum>
+		<strum id="8"> <!-- right2 -->
+			<anim name="right2" anim="note splash right20" fps="24" x="0" y="0" />
+		</strum>
+	</group>
 </splashes>
