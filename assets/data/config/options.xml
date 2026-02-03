@@ -1,0 +1,32 @@
+<!DOCTYPE codename-mod-options>
+<menu name="Shaggy Mod Options" desc="Modify mod options here">
+	<menu name="Gameplay" desc="Gameplay Options">
+		<checkbox id="healthDrain" name="Health Drain" value="true"/>
+	</menu>
+
+	<menu name="Camera" desc="Camera Options">
+		<checkbox id="cameraMovement" name="Custom Camera Movement" value="true"/>
+		<number id="cameraAngleMovement" name="Movement Angle" min="1" max="10" change="1" value="1"/>
+		<number id="cameraMovementAmount" name="Movement Amount" min="10" max="80" change="5" value="40"/>
+	</menu>
+
+	<menu name="Visual" desc="Visual Options">
+		<checkbox id="opponentNoteSplashes" name="Opponent Note Splashes" value="true"/>
+		<checkbox id="keybindReminders" name="Keybind Reminders" value="true"/>
+		<checkbox id="extraInformation" name="Extra Score Information" value="true"/>
+	</menu>
+
+	<menu name="Misc" desc="Misc Options">
+		<checkbox id="developerMode" name="Developer Options" value="false"/>
+	</menu>
+
+	<!-- <choice id="choiceExample" name="Choice Example">
+		<value name="Disabled" value="disabled"/>
+		<value name="This only" value="thisOnly"/>
+		<value name="All" value="all"/>
+	</choice>
+
+	<menu name="Submenu Example" desc="Submenu test">
+		<checkbox id="levelOfIdk2" name="Level of idk" />
+	</menu> -->
+</menu>
