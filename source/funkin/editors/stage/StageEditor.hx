@@ -365,7 +365,7 @@ class StageEditor extends UIState {
 			default: (charPos.flipX) ? Flags.DEFAULT_CHARACTER : Flags.DEFAULT_OPPONENT;
 		}
 
-		var char = new Character(0,0, charName, charPos.flipX, true);
+		var char = new Character(null,0,0, charName, charPos.flipX, true);
 		charName = switch(node.name) {
 			case "dad" | "opponent": "NO_DELETE_dad";
 			case "gf" | "girlfriend": "NO_DELETE_girlfriend";
@@ -557,7 +557,7 @@ class StageEditor extends UIState {
 		stage.stageXML.x.addChild(node.x);
 		node.att.name = "character_" + stageSpritesWindow.buttons.members.length;
 
-		var char = new Character(0,0, "bf", false, true);
+		var char = new Character(null, 0, 0, "bf", false, true);
 		char.name = node.att.name;
 		char.debugMode = true;
 		// Play first anim, and make it the last frame

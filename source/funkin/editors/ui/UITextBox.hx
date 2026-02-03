@@ -100,20 +100,64 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 		}
 	}
 
+	public inline function isSeperator(char:String):Bool {
+		return char == " " || char == "\n" || char == "\t" || char == "\r"  || char == "-" || char == "_" || char == "," || char == "." || char == ";" || char == ":" || char == "!" || char == "?";
+	}
+
+	public inline function findWholeWord(text:String, pos:Int):Null<Array<Int>> {
+		if (text.length == 0) return null;
+		var start = pos;
+		var end = pos;
+
+		while (start > 0 && !isSeperator(text.charAt(start-1)))
+			start--;
+
+		while (end < text.length && !isSeperator(text.charAt(end)))
+			end++;
+
+		if (isSeperator(text.charAt(text.length)))
+			end++;
+
+		return [start, end];
+	}
+
 	public function onKeyDown(e:KeyCode, modifier:KeyModifier) {
 		switch(e) {
 			case RETURN:
 				focused = false;
 				if (onChange != null) onChange(label.text);
 			case LEFT:
-				changeSelection(-1);
+				if (modifier.ctrlKey){
+					position = 0;
+				} else {
+					changeSelection(-1);
+				}
 			case RIGHT:
-				changeSelection(1);
+				if (modifier.ctrlKey){
+					position = label.text.length;
+				} else {
+					changeSelection(1);
+				}
 			case BACKSPACE:
 				FlxG.sound.play(Paths.sound(Flags.DEFAULT_EDITOR_TEXTREMOVE_SOUND));
+
+				if (modifier.ctrlKey){
+					var wordBounds = findWholeWord(label.text, position);
+					if (wordBounds != null) {
+						label.text = label.text.substr(0, wordBounds[0]) + label.text.substr(wordBounds[1]);
+						position = wordBounds[0];
+					}
+					return;
+				}
+
 				if (position > 0) {
 					label.text = label.text.substr(0, position-1) + label.text.substr(position);
 					changeSelection(-1);
+				}
+			case DELETE:
+				FlxG.sound.play(Paths.sound(Flags.DEFAULT_EDITOR_TEXTREMOVE_SOUND));
+				if (position < label.text.length) {
+					label.text = label.text.substr(0, position) + label.text.substr(position+1);
 				}
 			case HOME:
 				position = 0;
@@ -137,13 +181,23 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 
 				// copying
 				Clipboard.generalClipboard.setData(TEXT_FORMAT, label.text);
+			case X:
+				FlxG.sound.play(Paths.sound(Flags.DEFAULT_EDITOR_TEXTTYPE_SOUND));
+
+				// if we are not holding ctrl, ignore
+				if (!modifier.ctrlKey) return;
+
+				// cutting
+				Clipboard.generalClipboard.setData(TEXT_FORMAT, label.text);
+				position = 0;
+				label.text = "";
 			default:
 				FlxG.sound.play(Paths.sound(Flags.DEFAULT_EDITOR_TEXTTYPE_SOUND));
 		}
 	}
 
 	public function changeSelection(change:Int) {
-		position = FlxMath.wrap(position + change, 0, label.text.length);
+		position = Std.int(FlxMath.bound(position + change, 0, label.text.length));
 	}
 	public function onKeyUp(e:KeyCode, modifier:KeyModifier) {}
 

@@ -64,10 +64,10 @@ class Character extends FunkinSprite implements IBeatReceiver implements IOffset
 
 	@:noCompletion var __stunnedTime:Float = 0;
 	@:noCompletion var __lockAnimThisFrame:Bool = false;
-
 	@:noCompletion var __switchAnims:Bool = true;
+	@:noCompletion public var __strumLine:StrumLine = null;
 
-	public function new(x:Float, y:Float, ?character:String, isPlayer:Bool = false, switchAnims:Bool = true, disableScripts:Bool = false)
+	public function new(strumLine:StrumLine, x:Float, y:Float, ?character:String, isPlayer:Bool = false, switchAnims:Bool = true, disableScripts:Bool = false)
 	{
 		super(x, y);
 
@@ -75,6 +75,7 @@ class Character extends FunkinSprite implements IBeatReceiver implements IOffset
 		curCharacter = character != null ? character : Flags.DEFAULT_CHARACTER;
 		this.isPlayer = isPlayer;
 		__switchAnims = switchAnims;
+		__strumLine = strumLine;
 
 		antialiasing = true;
 
@@ -263,9 +264,21 @@ class Character extends FunkinSprite implements IBeatReceiver implements IOffset
 		script.call("postDraw", [e]);
 	}
 
-	public var singAnims = ["singLEFT", "singDOWN", "singUP", "singRIGHT"];
-	public inline function getSingAnim(direction:Int, suffix:String = ""):String
-		return singAnims[direction % singAnims.length] + suffix;
+	public var singAnims = [
+		["singUP"],
+		["singLEFT", "singRIGHT"],
+		["singLEFT", "singUP", "singRIGHT"],
+		["singLEFT", "singDOWN", "singUP", "singRIGHT"],
+		["singLEFT", "singDOWN", "singDOWN", "singUP", "singRIGHT"],
+		["singLEFT", "singUP", "singRIGHT", "singLEFT", "singDOWN", "singRIGHT"],
+		["singLEFT", "singUP", "singRIGHT", "singUP", "singLEFT", "singDOWN", "singRIGHT"],
+		["singLEFT", "singDOWN", "singUP", "singRIGHT", "singLEFT", "singDOWN", "singUP", "singRIGHT"],
+		["singLEFT", "singDOWN", "singUP", "singRIGHT", "singUP", "singLEFT", "singDOWN", "singUP", "singRIGHT"],
+	];
+	public inline function getSingAnim(direction:Int, suffix:String = ""):String {
+		var kc = __strumLine != null && __strumLine.data.keyCount != null ? __strumLine.data.keyCount - 1 : Flags.DEFAULT_STRUM_AMOUNT - 1;
+		return singAnims[kc][direction] + suffix;
+	}
 
 	/**
 	 * Like `playSingAnimUnsafe` but checks if the character has the animation with the suffix part, otherwise it plays the animation without the suffix part.

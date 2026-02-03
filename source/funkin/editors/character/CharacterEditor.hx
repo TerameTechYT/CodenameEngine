@@ -292,7 +292,7 @@ class CharacterEditor extends UIState {
 
 		FlxG.cameras.add(uiCamera);
 
-		character = new CharacterGhost(0,0, __character, false, false);
+		character = new CharacterGhost(null,0,0, __character, false, false);
 		character.debugMode = true;
 		character.cameras = [charCamera];
 

@@ -29,35 +29,35 @@ class KeybindsOptions extends MusicBeatSubstate {
 
 	public var categories:Array<ControlsCategory> = [];
 	public static var defaultCategories:Array<ControlsCategory> = [
-		{
-			name: "category.notes",
-			settings: [
-				{
-					sparrowIcon: "game/notes/default",
-					sparrowAnim: "purple0",
-					name: "left",
-					control: 'NOTE_LEFT'
-				},
-				{
-					sparrowIcon: "game/notes/default",
-					sparrowAnim: "blue0",
-					name: "down",
-					control: 'NOTE_DOWN'
-				},
-				{
-					sparrowIcon: "game/notes/default",
-					sparrowAnim: "green0",
-					name: "up",
-					control: 'NOTE_UP'
-				},
-				{
-					sparrowIcon: "game/notes/default",
-					sparrowAnim: "red0",
-					name: "right",
-					control: 'NOTE_RIGHT'
-				},
-			]
-		},
+		// {
+		// 	name: "category.notes",
+		// 	settings: [
+		// 		{
+		// 			sparrowIcon: "game/notes/default",
+		// 			sparrowAnim: "purple0",
+		// 			name: "left",
+		// 			control: 'NOTE_LEFT'
+		// 		},
+		// 		{
+		// 			sparrowIcon: "game/notes/default",
+		// 			sparrowAnim: "blue0",
+		// 			name: "down",
+		// 			control: 'NOTE_DOWN'
+		// 		},
+		// 		{
+		// 			sparrowIcon: "game/notes/default",
+		// 			sparrowAnim: "green0",
+		// 			name: "up",
+		// 			control: 'NOTE_UP'
+		// 		},
+		// 		{
+		// 			sparrowIcon: "game/notes/default",
+		// 			sparrowAnim: "red0",
+		// 			name: "right",
+		// 			control: 'NOTE_RIGHT'
+		// 		},
+		// 	]
+		// },
 		{
 			name: "category.ui",
 			settings: [

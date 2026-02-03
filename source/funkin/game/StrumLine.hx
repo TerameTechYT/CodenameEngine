@@ -13,91 +13,110 @@ import funkin.backend.system.Controls;
  * Group of strums, that contains the strums and notes.
  * Used in PlayState.
 **/
-class StrumLine extends FlxTypedGroup<Strum> {
+class StrumLine extends FlxTypedGroup<Strum>
+{
 	/**
 	 * Signal that triggers whenever a note is hit. Similar to onPlayerHit and onDadHit, except strumline specific.
 	 * To add a listener, do
 	 * `strumLine.onHit.add(function(e:NoteHitEvent) {});`
 	 */
 	public var onHit:FlxTypedSignal<NoteHitEvent->Void> = new FlxTypedSignal<NoteHitEvent->Void>();
+
 	/**
 	 * Signal that triggers whenever a note is missed. Similar to onPlayerMiss, except strumline specific.
 	 * To add a listener, do
 	 * `strumLine.onMiss.add(function(e:NoteMissEvent) {});`
 	 */
 	public var onMiss:FlxTypedSignal<NoteMissEvent->Void> = new FlxTypedSignal<NoteMissEvent->Void>();
+
 	/**
 	 * Signal that triggers whenever a note is being updated. Similar to onNoteUpdate, except strumline specific.
 	 * To add a listener, do
 	 * `strumLine.onNoteUpdate.add(function(e:NoteUpdateEvent) {});`
 	 */
 	public var onNoteUpdate:FlxTypedSignal<NoteUpdateEvent->Void> = new FlxTypedSignal<NoteUpdateEvent->Void>();
+
 	/**
 	 * Signal that triggers whenever a note is being deleted. Similar to onNoteDelete, except strumline specific.
 	 * To add a listener, do
 	 * `strumLine.onNoteDelete.add(function(e:SimpleNoteEvent) {});`
 	 */
 	public var onNoteDelete:FlxTypedSignal<SimpleNoteEvent->Void> = new FlxTypedSignal<SimpleNoteEvent->Void>();
+
 	/**
 	 * Array containing all of the characters "attached" to those strums.
 	 */
 	public var characters:Array<Character>;
+
 	/**
 	 * Whenever this strumline is controlled by cpu or not.
 	 */
 	public var cpu(default, set):Bool = false;
+
 	/**
 	 * Whenever this strumline is from the opponent side or the player side.
 	 */
 	public var opponentSide:Bool = false;
+
 	/**
 	 * Controls assigned to this strumline.
 	 */
 	public var controls:Controls = null;
+
 	/**
 	 * Chart JSON data assigned to this StrumLine (Codename format)
 	 */
 	public var data:ChartStrumLine = null;
+
 	/**
 	 * Whenever Ghost Tapping is enabled.
 	 */
 	@:isVar public var ghostTapping(get, set):Null<Bool> = null;
+
 	/**
 	 * Group of all of the notes in this strumline. Using `forEach` on this group will only loop through the first notes for performance reasons.
 	 */
 	public var notes:NoteGroup;
+
 	/**
 	 * Whenever alt animation is enabled on this strumline.
 	 */
 	public var altAnim(get, set):Bool;
+
 	/**
 	 * Which animation suffix on characters that should be used when hitting notes.
 	 */
 	public var animSuffix(default, set):String = "";
+
 	/**
 	 * TODO: Write documentation about this being a variable that can help when making multi key
 	 */
 	public var strumAnimPrefix = ["left", "down", "up", "right"];
+
 	/**
 	 * Vocals sound (Vocals.ogg). Used for individual vocals per strumline.
 	 */
 	public var vocals:FlxSound;
+
 	/**
 	 * Extra data that can be added to the strum line.
 	**/
 	public var extra:Map<String, Dynamic> = [];
 
-	private function get_ghostTapping() {
-		if (this.ghostTapping != null) return this.ghostTapping;
-		if (PlayState.instance != null) return PlayState.instance.ghostTapping;
+	private function get_ghostTapping()
+	{
+		if (this.ghostTapping != null)
+			return this.ghostTapping;
+		if (PlayState.instance != null)
+			return PlayState.instance.ghostTapping;
 		return false;
 	}
 
 	private inline function set_ghostTapping(b:Bool):Bool
 		return this.ghostTapping = b;
 
+	private var startingPos:FlxPoint = FlxPoint.get(0, 0);
 
-	private var startingPos:FlxPoint = FlxPoint.get(0,0);
 	/**
 	 * The scale of the strums.
 	 * If called after generate, the strums wont be scaled.
@@ -105,7 +124,9 @@ class StrumLine extends FlxTypedGroup<Strum> {
 	**/
 	public var strumScale:Float = 1;
 
-	public function new(characters:Array<Character>, startingPos:FlxPoint, strumScale:Float, cpu:Bool = false, opponentSide:Bool = true, ?controls:Controls, ?vocalPrefix:String = "") {
+	public function new(characters:Array<Character>, startingPos:FlxPoint, strumScale:Float, cpu:Bool = false, opponentSide:Bool = true, ?controls:Controls,
+			?vocalPrefix:String = "")
+	{
 		super();
 		this.characters = characters;
 		this.startingPos = startingPos;
@@ -123,24 +144,29 @@ class StrumLine extends FlxTypedGroup<Strum> {
 	/**
 	 * Generates the notes for the strumline.
 	**/
-	public function generate(strumLine:ChartStrumLine, ?startTime:Float) {
+	public function generate(strumLine:ChartStrumLine, ?startTime:Float)
+	{
 		// TODO: implement double generate call support if needed
 
 		var total = 0;
-		if (strumLine.notes != null) for(note in strumLine.notes) {
-			if (startTime != null && startTime > note.time)
-				continue;
+		if (strumLine.notes != null)
+			for (note in strumLine.notes)
+			{
+				if (startTime != null && startTime > note.time)
+					continue;
 
-			total++;
+				total++;
 
-			if (note.sLen > Conductor.stepCrochet * 0.75) {
-				var len:Float = note.sLen;
-				while(len > 10) {
-					total++;
-					len -= Math.min(len, Conductor.stepCrochet);
+				if (note.sLen > Conductor.stepCrochet * 0.75)
+				{
+					var len:Float = note.sLen;
+					while (len > 10)
+					{
+						total++;
+						len -= Math.min(len, Conductor.stepCrochet);
+					}
 				}
 			}
-		}
 
 		notes.preallocate(total);
 
@@ -148,44 +174,53 @@ class StrumLine extends FlxTypedGroup<Strum> {
 
 		var prev:Note = null;
 
-		if (strumLine.notes != null) for(note in strumLine.notes) {
-			if (startTime != null && startTime > note.time)
-				continue;
+		if (strumLine.notes != null)
+			for (note in strumLine.notes)
+			{
+				if (startTime != null && startTime > note.time)
+					continue;
 
-			notes.members[total-(il++)-1] = prev = new Note(this, note, false, prev);
+				notes.members[total - (il++) - 1] = prev = new Note(this, note, false, prev);
 
-			if (note.sLen > Conductor.stepCrochet * 0.75) {
-				var len:Float = note.sLen;
-				var curLen:Float = 0;
-				while(len > 10) {
-					curLen = Math.min(len, Conductor.stepCrochet);
-					notes.members[total-(il++)-1] = prev = new Note(this, note, true, curLen, note.sLen - len, prev);
-					len -= curLen;
+				if (note.sLen > Conductor.stepCrochet * 0.75)
+				{
+					var len:Float = note.sLen;
+					var curLen:Float = 0;
+					while (len > 10)
+					{
+						curLen = Math.min(len, Conductor.stepCrochet);
+						notes.members[total - (il++) - 1] = prev = new Note(this, note, true, curLen, note.sLen - len, prev);
+						len -= curLen;
 
-					if (prev != null && prev.sustainParent != null)
-						prev.sustainParent.tailCount++;
+						if (prev != null && prev.sustainParent != null)
+							prev.sustainParent.tailCount++;
+					}
 				}
 			}
-		}
 		notes.sortNotes();
 
 		var scrollSpeed = strumLine.scrollSpeed;
-		if(scrollSpeed == null) if (PlayState.instance != null) scrollSpeed = PlayState.instance.scrollSpeed;
-		if(scrollSpeed == null) scrollSpeed = 1;
+		if (scrollSpeed == null)
+			if (PlayState.instance != null)
+				scrollSpeed = PlayState.instance.scrollSpeed;
+		if (scrollSpeed == null)
+			scrollSpeed = 1;
 
 		// TODO: Make this work by accounting zoom and scroll speed changes  - Nex
 		/*var limit = FlxG.height / 0.45;
-		notes.limit = limit / scrollSpeed;
-			OR
-		notes.limit = Flags.DEFAULT_NOTE_MS_LIMIT / scrollSpeed;*/
+			notes.limit = limit / scrollSpeed;
+				OR
+			notes.limit = Flags.DEFAULT_NOTE_MS_LIMIT / scrollSpeed; */
 	}
 
-	public override function update(elapsed:Float) {
+	public override function update(elapsed:Float)
+	{
 		super.update(elapsed);
 		notes.update(elapsed);
 	}
 
-	public override function draw() {
+	public override function draw()
+	{
 		super.draw();
 		notes.cameras = cameras;
 		notes.draw();
@@ -194,28 +229,35 @@ class StrumLine extends FlxTypedGroup<Strum> {
 	/**
 	 * Updates the notes.
 	**/
-	public inline function updateNotes() {
+	public inline function updateNotes()
+	{
 		__updateNote_songPos = Conductor.songPosition;
-		if(__updateNote_event == null) __updateNote_event = PlayState.instance.__updateNote_event;
+		if (__updateNote_event == null)
+			__updateNote_event = PlayState.instance.__updateNote_event;
 		notes.forEach(updateNote);
 	}
 
 	var __updateNote_strum:Strum;
 	var __updateNote_songPos:Float;
 	var __updateNote_event:NoteUpdateEvent;
+
 	/**
 	 * Updates a note.
 	 * This updates the position, state, and handles the input.
 	**/
-	public function updateNote(daNote:Note) {
+	public function updateNote(daNote:Note)
+	{
 		__updateNote_strum = members[daNote.noteData];
-		if (__updateNote_strum == null) return;
+		if (__updateNote_strum == null)
+			return;
 
 		__updateNote_event.recycle(daNote, FlxG.elapsed, __updateNote_strum);
 		onNoteUpdate.dispatch(__updateNote_event);
-		if (__updateNote_event.cancelled) return;
+		if (__updateNote_event.cancelled)
+			return;
 
-		if (__updateNote_event.__updateHitWindow) {
+		if (__updateNote_event.__updateHitWindow)
+		{
 			var hitWindow = Flags.USE_LEGACY_TIMING ? PlayState.instance.hitWindow : PlayState.instance.ratingManager.lastHitWindow;
 			daNote.canBeHit = (daNote.strumTime > __updateNote_songPos - (hitWindow * daNote.latePressWindow)
 				&& daNote.strumTime < __updateNote_songPos + (hitWindow * daNote.earlyPressWindow));
@@ -227,22 +269,31 @@ class StrumLine extends FlxTypedGroup<Strum> {
 		if (cpu && __updateNote_event.__autoCPUHit && !daNote.avoid && !daNote.wasGoodHit && daNote.strumTime < __updateNote_songPos)
 			PlayState.instance.goodNoteHit(this, daNote);
 
-		if (daNote.wasGoodHit && daNote.isSustainNote && daNote.strumTime + daNote.sustainLength < __updateNote_songPos && !daNote.noSustainClip) {
+		if (daNote.wasGoodHit
+			&& daNote.isSustainNote
+			&& daNote.strumTime + daNote.sustainLength < __updateNote_songPos
+			&& !daNote.noSustainClip)
+		{
 			deleteNote(daNote);
 			return;
 		}
 
-		if (daNote.tooLate) {
-			if (!cpu) PlayState.instance.noteMiss(this, daNote);
-			else deleteNote(daNote);
+		if (daNote.tooLate)
+		{
+			if (!cpu)
+				PlayState.instance.noteMiss(this, daNote);
+			else
+				deleteNote(daNote);
 			return;
 		}
 
+		if (__updateNote_event.strum == null)
+			return;
+		if (__updateNote_event.__reposNote)
+			__updateNote_event.strum.updateNotePosition(daNote);
 
-		if (__updateNote_event.strum == null) return;
-		if (__updateNote_event.__reposNote) __updateNote_event.strum.updateNotePosition(daNote);
-
-		if (daNote.isSustainNote) {
+		if (daNote.isSustainNote)
+		{
 			daNote.updateSustain(__updateNote_event.strum);
 		}
 	}
@@ -252,13 +303,22 @@ class StrumLine extends FlxTypedGroup<Strum> {
 	var __justReleased:Array<Bool> = [];
 	var __notePerStrum:Array<Note> = [];
 
-	function __inputProcessPressed(note:Note) {
-		if (__pressed[note.strumID] && note.isSustainNote && note.strumTime < __updateNote_songPos && !note.wasGoodHit && note.sustainParent.wasGoodHit) {
+	function __inputProcessPressed(note:Note)
+	{
+		if (__pressed[note.strumID]
+			&& note.isSustainNote
+			&& note.strumTime < __updateNote_songPos
+			&& !note.wasGoodHit
+			&& note.sustainParent.wasGoodHit)
+		{
 			PlayState.instance.goodNoteHit(this, note);
 		}
 	}
-	function __inputProcessJustPressed(note:Note) {
-		if (__justPressed[note.strumID] && !note.isSustainNote && !note.wasGoodHit && note.canBeHit) {
+
+	function __inputProcessJustPressed(note:Note)
+	{
+		if (__justPressed[note.strumID] && !note.isSustainNote && !note.wasGoodHit && note.canBeHit)
+		{
 			var cur = __notePerStrum[note.strumID];
 			var songPos = __updateNote_songPos;
 
@@ -268,9 +328,7 @@ class StrumLine extends FlxTypedGroup<Strum> {
 			var notePenalty = note.avoid ? 1 : 0;
 			var curPenalty = (cur != null && cur.avoid) ? 1 : 0;
 
-			if (cur == null
-				|| notePenalty < curPenalty
-				|| (notePenalty == curPenalty && noteDist < curDist))
+			if (cur == null || notePenalty < curPenalty || (notePenalty == curPenalty && noteDist < curDist))
 				__notePerStrum[note.strumID] = note;
 		}
 	}
@@ -279,26 +337,32 @@ class StrumLine extends FlxTypedGroup<Strum> {
 	 * Updates the input for the strumline, and handles the input.
 	 * @param id The ID of the strum
 	**/
-	public function updateInput(id:Int = 0) {
+	public function updateInput(id:Int = 0)
+	{
 		updateNotes();
 
-		if (cpu) return;
+		if (cpu)
+			return;
 
-		if (__pressed.length != members.length) {
+		if (__pressed.length != members.length)
+		{
 			__pressed.resize(members.length);
 			__justPressed.resize(members.length);
 			__justReleased.resize(members.length);
 		}
 
-		for (i in 0...members.length) {
+		for (i in 0...members.length)
+		{
 			__pressed[i] = members[i].__getPressed(this);
 			__justPressed[i] = members[i].__getJustPressed(this);
 			__justReleased[i] = members[i].__getJustReleased(this);
 		}
 
 		var event = EventManager.get(InputSystemEvent).recycle(__pressed, __justPressed, __justReleased, this, id);
-		if (PlayState.instance != null) PlayState.instance.gameAndCharsEvent("onInputUpdate", event);
-		if (event.cancelled) return;
+		if (PlayState.instance != null)
+			PlayState.instance.gameAndCharsEvent("onInputUpdate", event);
+		if (event.cancelled)
+			return;
 
 		__pressed = CoolUtil.getDefault(event.pressed, []);
 		__justPressed = CoolUtil.getDefault(event.justPressed, []);
@@ -306,12 +370,16 @@ class StrumLine extends FlxTypedGroup<Strum> {
 
 		__notePerStrum = cast new haxe.ds.Vector(members.length); // [for(_ in 0...members.length) null];
 
-		if (__pressed.contains(true)) {
-			if (__justPressed.contains(true)) {
+		if (__pressed.contains(true))
+		{
+			if (__justPressed.contains(true))
+			{
 				notes.forEachAlive(__inputProcessJustPressed);
 
-				if (!ghostTapping) for (k => pr in __justPressed) if (pr && __notePerStrum[k] == null)
-					PlayState.instance.noteMiss(this, null, k, ID); // FUCK YOU
+				if (!ghostTapping)
+					for (k => pr in __justPressed)
+						if (pr && __notePerStrum[k] == null)
+							PlayState.instance.noteMiss(this, null, k, ID); // FUCK YOU
 
 				for (e in __notePerStrum)
 					if (e != null)
@@ -325,7 +393,8 @@ class StrumLine extends FlxTypedGroup<Strum> {
 			notes.forEachAlive(__inputProcessPressed);
 		}
 
-		forEach(function(str:Strum) {
+		forEach(function(str:Strum)
+		{
 			str.updatePlayerInput(__pressed[str.ID], __justPressed[str.ID], __justReleased[str.ID]);
 		});
 
@@ -344,15 +413,18 @@ class StrumLine extends FlxTypedGroup<Strum> {
 	 * Generates strums, and adds them to the strumline.
 	 * @param amount The amount of strums to generate (-1 for the default amount)
 	**/
-	public inline function generateStrums(amount:Int = -1) {
-		if(amount == -1) amount = Flags.DEFAULT_STRUM_AMOUNT;
+	public inline function generateStrums(amount:Int = -1)
+	{
+		if (amount == -1)
+			amount = Flags.DEFAULT_STRUM_AMOUNT;
 		for (i in 0...amount)
 			add(createStrum(i));
 	}
 
-	override function destroy() {
+	override function destroy()
+	{
 		super.destroy();
-		if(startingPos != null)
+		if (startingPos != null)
 			startingPos.put();
 		notes = FlxDestroyUtil.destroy(notes);
 	}
@@ -364,34 +436,250 @@ class StrumLine extends FlxTypedGroup<Strum> {
 	 * @param spritePath (Optional) The sprite's graphic path if you don't want the default one.
 	 * @param playIntroAnimation (Optional) Whenever the intro animation should be played, by default might be `true` under certain conditions.
 	 */
-	public function createStrum(i:Int, ?animPrefix:String, ?spritePath:String, ?playIntroAnimation:Bool) {
+	public function createStrum(i:Int, ?animPrefix:String, ?spritePath:String, ?playIntroAnimation:Bool)
+	{
 		if (animPrefix == null)
 			animPrefix = strumAnimPrefix[i % strumAnimPrefix.length];
-		var babyArrow:Strum = new Strum(startingPos.x + (Note.swagWidth * strumScale * (data.strumSpacing != null ? data.strumSpacing : 1) * i), startingPos.y + (Note.swagWidth*0.5) - (Note.swagWidth * strumScale * 0.5));
+		var babyArrow:Strum = new Strum(startingPos.x
+			+ (Note.swagWidth * strumScale * (data.strumSpacing != null ? data.strumSpacing : 1) * i),
+			startingPos.y
+			+ (Note.swagWidth * 0.5)
+			- (Note.swagWidth * strumScale * 0.5));
 		babyArrow.ID = i;
 		babyArrow.strumLine = this;
 
-		if(data.scrollSpeed != null)
+		if (data.scrollSpeed != null)
 			babyArrow.scrollSpeed = data.scrollSpeed;
 
 		var event = EventManager.get(StrumCreationEvent).recycle(babyArrow, PlayState.instance.strumLines.members.indexOf(this), i, animPrefix);
-		event.__doAnimation = playIntroAnimation == null ? (!MusicBeatState.skipTransIn && (PlayState.instance != null ? PlayState.instance.introLength > 0 : true)) : playIntroAnimation;
-		if (spritePath != null) event.sprite = spritePath;
-		if (PlayState.instance != null) event = PlayState.instance.gameAndCharsEvent("onStrumCreation", event);
+		event.__doAnimation = playIntroAnimation == null ? (!MusicBeatState.skipTransIn
+			&& (PlayState.instance != null ? PlayState.instance.introLength > 0 : true)) : playIntroAnimation;
+		if (spritePath != null)
+			event.sprite = spritePath;
+		if (PlayState.instance != null)
+			event = PlayState.instance.gameAndCharsEvent("onStrumCreation", event);
 
-		if (!event.cancelled) {
+		if (!event.cancelled)
+		{
 			babyArrow.frames = Paths.getFrames(event.sprite);
-			babyArrow.animation.addByPrefix('green', 'arrowUP');
-			babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
-			babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
-			babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
+			switch (event.strum.strumLine.data.keyCount != null ? event.strum.strumLine.data.keyCount : Flags.DEFAULT_STRUM_AMOUNT)
+			{
+				case 1:
+					babyArrow.animation.addByPrefix('static', 'square static');
+					babyArrow.animation.addByPrefix('confirm', 'square confirm', 24, false);
+					babyArrow.animation.addByPrefix('pressed', 'square press', 24, false);
+				case 2:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+					}
+				case 3:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'square static');
+							babyArrow.animation.addByPrefix('confirm', 'square confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'square press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+					}
+				case 4:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+					}
+				case 5:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'square static');
+							babyArrow.animation.addByPrefix('confirm', 'square confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'square press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 4:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+					}
+				case 6:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left2 press', 24, false);
+						case 4:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 5:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right2 press', 24, false);
+					}
+				case 7:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'square static');
+							babyArrow.animation.addByPrefix('confirm', 'square confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'square press', 24, false);
+						case 4:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left2 press', 24, false);
+						case 5:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 6:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right2 press', 24, false);
+					}
+				case 8:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+						case 4:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left2 press', 24, false);
+						case 5:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down2 press', 24, false);
+						case 6:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up2 press', 24, false);
+						case 7:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right2 press', 24, false);
+					}
+				case 9:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+						case 4:
+							babyArrow.animation.addByPrefix('static', 'square static');
+							babyArrow.animation.addByPrefix('confirm', 'square confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'square press', 24, false);
+						case 5:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left2 press', 24, false);
+						case 6:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down2 press', 24, false);
+						case 7:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up2 press', 24, false);
+						case 8:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right2 press', 24, false);
+					}
+			}
 
 			babyArrow.antialiasing = true;
 			babyArrow.setGraphicSize(Std.int((babyArrow.width * Flags.DEFAULT_NOTE_SCALE) * strumScale));
-
-			babyArrow.animation.addByPrefix('static', 'arrow${event.animPrefix.toUpperCase()}');
-			babyArrow.animation.addByPrefix('pressed', '${event.animPrefix} press', 24, false);
-			babyArrow.animation.addByPrefix('confirm', '${event.animPrefix} confirm', 24, false);
 		}
 
 		babyArrow.cpu = cpu;
@@ -402,13 +690,15 @@ class StrumLine extends FlxTypedGroup<Strum> {
 		{
 			babyArrow.y -= 10;
 			babyArrow.alpha = 0;
-			FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i * (4 / (data.keyCount != null ? data.keyCount : 4)))});
+			FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1,
+				{ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i * (4 / (data.keyCount != null ? data.keyCount : 4)))});
 		}
 		babyArrow.playAnim('static');
 
 		insert(i, babyArrow);
 
-		if (PlayState.instance != null) PlayState.instance.gameAndCharsEvent("onPostStrumCreation", event);
+		if (PlayState.instance != null)
+			PlayState.instance.gameAndCharsEvent("onPostStrumCreation", event);
 
 		return babyArrow;
 	}
@@ -417,11 +707,14 @@ class StrumLine extends FlxTypedGroup<Strum> {
 	 * Deletes a note from this strumline.
 	 * @param note Note to delete
 	 */
-	public function deleteNote(note:Note) {
-		if (note == null) return;
+	public function deleteNote(note:Note)
+	{
+		if (note == null)
+			return;
 		var event:SimpleNoteEvent = EventManager.get(SimpleNoteEvent).recycle(note);
 		onNoteDelete.dispatch(event);
-		if (!event.cancelled) {
+		if (!event.cancelled)
+		{
 			if (note.isSustainNote && note.sustainParent != null && note.sustainParent.tailCount > 0)
 				note.sustainParent.tailCount--;
 			note.kill();
@@ -430,31 +723,39 @@ class StrumLine extends FlxTypedGroup<Strum> {
 		}
 	}
 
-	public static inline function calculateStartingXPos(hudXRatio:Float, scale:Float, spacing:Float, keyCount:Int) {
-		return (FlxG.width * hudXRatio) - ((Note.swagWidth * scale * ((keyCount/2)-0.5) * spacing) + Note.swagWidth * 0.5 * scale);
+	public static inline function calculateStartingXPos(hudXRatio:Float, scale:Float, spacing:Float, keyCount:Int)
+	{
+		return (FlxG.width * hudXRatio) - ((Note.swagWidth * scale * ((keyCount / 2) - 0.5) * spacing) + Note.swagWidth * 0.5 * scale);
 	}
 
 	/**
 	 * SETTERS & GETTERS
 	 */
 	#if REGION
-	private inline function set_cpu(b:Bool):Bool {
-		for(s in members)
+	private inline function set_cpu(b:Bool):Bool
+	{
+		for (s in members)
 			if (s != null)
 				s.cpu = b;
 		return cpu = b;
 	}
-	private inline function set_animSuffix(str:String):String {
-		for(s in members)
+
+	private inline function set_animSuffix(str:String):String
+	{
+		for (s in members)
 			if (s != null)
 				s.animSuffix = str;
 		return animSuffix = str;
 	}
-	private inline function set_altAnim(b:Bool):Bool {
+
+	private inline function set_altAnim(b:Bool):Bool
+	{
 		animSuffix = b ? "-alt" : "";
 		return b;
 	}
-	private inline function get_altAnim():Bool {
+
+	private inline function get_altAnim():Bool
+	{
 		return animSuffix == "-alt";
 	}
 	#end

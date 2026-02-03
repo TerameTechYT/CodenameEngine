@@ -785,7 +785,7 @@ class PlayState extends MusicBeatState
 				case 2: "girlfriend";
 			}) : strumLine.position;
 			if (strumLine.characters != null) for(k=>charName in strumLine.characters) {
-				var char = new Character(0, 0, charName, stage.isCharFlipped(stage.characterPoses[charName] != null ? charName : charPosName, strumLine.type == 1));
+				var char = new Character(null, 0, 0, charName, stage.isCharFlipped(stage.characterPoses[charName] != null ? charName : charPosName, strumLine.type == 1));
 				stage.applyCharStuff(char, charPosName, k);
 				chars.push(char);
 			}
@@ -805,6 +805,10 @@ class PlayState extends MusicBeatState
 				strumLine.type != 1, coopMode ? ((strumLine.type == 1) != opponentMode ? controlsP1 : controlsP2) : controls,
 				strumLine.vocalsSuffix
 			);
+
+			for (c in strLine.characters)
+				c.__strumLine = strLine;
+
 			strLine.cameras = [camHUD];
 			strLine.data = strumLine;
 			strLine.visible = (strumLine.visible != false);
@@ -1603,7 +1607,9 @@ class PlayState extends MusicBeatState
 				}
 			case "Add Camera Zoom":
 				var camera:FlxCamera = event.params[1] == "camHUD" ? camHUD : camGame;
+				var camera2:FlxCamera = event.params[1] == "camHUD" ? camGame : camHUD;
 				camera.zoom += event.params[0];
+				camera2.zoom += event.params[0] / 2;
 			case "Camera Bop":
 				if (Options.camZoomOnBeat) {
 					if (useCamZoomMult) {
@@ -1946,7 +1952,7 @@ class PlayState extends MusicBeatState
 		if (strumLine != null && !strumLine.cpu)
 			event = EventManager.get(NoteHitEvent).recycle(false, !note.isSustainNote, !note.isSustainNote, null, defaultDisplayRating, defaultDisplayCombo, note, strumLine.characters, true, note.noteType, note.animSuffix.getDefault(note.strumID < strumLine.members.length ? strumLine.members[note.strumID].animSuffix : strumLine.animSuffix), "game/score/", "", note.strumID, rating.score, note.isSustainNote ? null : rating.accuracy, 0.023, rating.name, Options.splashesEnabled && !note.isSustainNote && rating.splash, 0.5, true, 0.7, true, true, iconP1);
 		else
-			event = EventManager.get(NoteHitEvent).recycle(false, false, false, null, defaultDisplayRating, defaultDisplayCombo, note, strumLine.characters, false, note.noteType, note.animSuffix.getDefault(note.strumID < strumLine.members.length ? strumLine.members[note.strumID].animSuffix : strumLine.animSuffix), "game/score/", "", note.strumID, 0, null, 0, rating.name, false, 0.5, true, 0.7, true, true, iconP2);
+			event = EventManager.get(NoteHitEvent).recycle(false, false, false, null, defaultDisplayRating, defaultDisplayCombo, note, strumLine.characters, false, note.noteType, note.animSuffix.getDefault(note.strumID < strumLine.members.length ? strumLine.members[note.strumID].animSuffix : strumLine.animSuffix), "game/score/", "", note.strumID, 0, null, 0, rating.name, Options.splashesEnabled && !note.isSustainNote && rating.splash, 0.5, true, 0.7, true, true, iconP2);
 		event.deleteNote = !note.isSustainNote; // work around, to allow sustain notes to be deleted
 		event = scripts.event(strumLine != null && !strumLine.cpu ? "onPlayerHit" : "onDadHit", event);
 		strumLine.onHit.dispatch(event);
@@ -1983,7 +1989,7 @@ class PlayState extends MusicBeatState
 
 			if (event.note.__strum != null) {
 				if (!event.strumGlowCancelled) event.note.__strum.press(event.note.strumTime);
-				if (event.showSplash) splashHandler.showSplash(event.note.splash, event.note.__strum);
+				if (event.showSplash) splashHandler.showSplash(event.note.splash, event.note.__strum, event.note.strumLine.data.keyCount != null ? event.note.strumLine.data.keyCount : Flags.DEFAULT_STRUM_AMOUNT);
 			}
 		}
 

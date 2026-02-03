@@ -68,31 +68,13 @@ class Strum extends FlxSprite {
 	public var getJustReleased:StrumLine->Bool = null;
 
 	@:dox(hide) public inline function __getPressed(strumLine:StrumLine):Bool {
-		return getPressed != null ? getPressed(strumLine) : strumLine.members.length != 4 ? ControlsUtil.getPressed(strumLine.controls, strumLine.members.length+"k"+ID) : switch(ID) {
-			case 0: strumLine.controls.NOTE_LEFT;
-			case 1: strumLine.controls.NOTE_DOWN;
-			case 2: strumLine.controls.NOTE_UP;
-			case 3: strumLine.controls.NOTE_RIGHT;
-			default: false;
-		}
+		return getPressed != null ? getPressed(strumLine) : ControlsUtil.getPressed(strumLine.controls, strumLine.data.keyCount+"k"+ID);
 	}
 	@:dox(hide) public inline function __getJustPressed(strumLine:StrumLine) {
-		return getJustPressed != null ? getJustPressed(strumLine) : strumLine.members.length != 4 ? ControlsUtil.getJustPressed(strumLine.controls, strumLine.members.length+"k"+ID) : switch(ID) {
-			case 0: strumLine.controls.NOTE_LEFT_P;
-			case 1: strumLine.controls.NOTE_DOWN_P;
-			case 2: strumLine.controls.NOTE_UP_P;
-			case 3: strumLine.controls.NOTE_RIGHT_P;
-			default: false;
-		}
+		return getJustPressed != null ? getJustPressed(strumLine) : ControlsUtil.getJustPressed(strumLine.controls, strumLine.data.keyCount+"k"+ID);
 	}
 	@:dox(hide) public inline function __getJustReleased(strumLine:StrumLine) {
-		return getJustReleased != null ? getJustReleased(strumLine) : strumLine.members.length != 4 ? ControlsUtil.getJustReleased(strumLine.controls, strumLine.members.length+"k"+ID) : switch(ID) {
-			case 0: strumLine.controls.NOTE_LEFT_R;
-			case 1: strumLine.controls.NOTE_DOWN_R;
-			case 2: strumLine.controls.NOTE_UP_R;
-			case 3: strumLine.controls.NOTE_RIGHT_R;
-			default: false;
-		}
+		return getJustReleased != null ? getJustReleased(strumLine) : ControlsUtil.getJustReleased(strumLine.controls, strumLine.data.keyCount+"k"+ID);
 	}
 
 	/**

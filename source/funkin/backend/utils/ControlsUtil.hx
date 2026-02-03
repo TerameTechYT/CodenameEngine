@@ -114,9 +114,12 @@ class ControlsUtil {
 	}
 
 	private static inline function parseControlsXml(xml:Access) {
+		Logs.trace('Parsing controls.xml...', INFO);
 		for (category in xml.elements) {
+			Logs.trace('Loading control category', INFO);
 			for (control in category.elements) {
 				if (!control.has.name) {
+					Logs.trace('Control without a name found in controls.xml, skipping...', WARNING);
 					continue;
 				} 
 
@@ -138,24 +141,32 @@ class ControlsUtil {
 
 					//check for save data (and load default if it doesnt exist)
 					if (p1 != null) {
+						Logs.trace('Found saved P1 key for control "$name": ${Std.string(p1)}', INFO);
 						keyP1 = p1;
 					} else {
+						Logs.trace('No saved P1 key for control "$name", loading default.', INFO);
 						if (defaultKeyP1 != "") keyP1 = FlxKey.fromString(defaultKeyP1);
 						Reflect.setProperty(FlxG.save.data, "P1_"+saveName, keyP1);
 					}
 						
 					if (p2 != null) {
+						Logs.trace('Found saved P2 key for control "$name": ${Std.string(p2)}', INFO);
 						keyP2 = p2;
 					} else {
+						Logs.trace('No saved P2 key for control "$name", loading default.', INFO);
 						if (defaultKeyP2 != "") keyP2 = FlxKey.fromString(defaultKeyP2);
 						Reflect.setProperty(FlxG.save.data, "P2_"+saveName, keyP2);
 					}
 
 				} else {
 					//if no save data just load the default
+					Logs.trace('No saveName provided for control "$name", loading default keys.', WARNING);
+
 					if (defaultKeyP1 != "") keyP1 = FlxKey.fromString(defaultKeyP1);
 					if (defaultKeyP2 != "") keyP2 = FlxKey.fromString(defaultKeyP2);
 				}
+
+				Logs.trace('Loaded control "$name" with P1 key: ${Std.string(keyP1)} and P2 key: ${Std.string(keyP2)}', INFO);
 
 				ControlsUtil.addKeysToCustomControl(PlayerSettings.solo.controls, name, [keyP1, keyP2]);
 				ControlsUtil.addKeysToCustomControl(PlayerSettings.player1.controls, name, [keyP1, 0]);
