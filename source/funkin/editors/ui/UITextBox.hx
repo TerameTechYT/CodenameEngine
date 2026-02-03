@@ -6,7 +6,8 @@ import lime.ui.KeyModifier;
 import openfl.desktop.Clipboard;
 import openfl.geom.Rectangle;
 
-class UITextBox extends UISliceSprite implements IUIFocusable {
+class UITextBox extends UISliceSprite implements IUIFocusable
+{
 	public var label:UIText;
 
 	public var position:Int = 0;
@@ -17,7 +18,8 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 
 	var __wasFocused:Bool = false;
 
-	public function new(x:Float, y:Float, text:String = "", width:Int = 320, height:Int = 32, multiline:Bool = false, small:Bool = false) {
+	public function new(x:Float, y:Float, text:String = "", width:Int = 320, height:Int = 32, multiline:Bool = false, small:Bool = false)
+	{
 		super(x, y, width, height, 'editors/ui/inputbox${small ? "-small" : ""}');
 
 		label = new UIText(0, 0, width, text, small ? 12 : 15);
@@ -36,8 +38,10 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 
 	var cacheRect:Rectangle = new Rectangle();
 
-	public override function update(elapsed:Float) {
-		if (selectable && hovered && FlxG.mouse.justReleased && __lastDrawCameras.length > 0) {
+	public override function update(elapsed:Float)
+	{
+		if (selectable && hovered && FlxG.mouse.justReleased && __lastDrawCameras.length > 0)
+		{
 			// get caret pos
 			var pos = FlxG.mouse.getScreenPosition(__lastDrawCameras[0], FlxPoint.get());
 			pos.x -= label.x;
@@ -45,7 +49,8 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 
 			if (pos.x < 0)
 				position = 0;
-			else {
+			else
+			{
 				var index = label.textField.getCharIndexAtPoint(pos.x, pos.y);
 				if (index > -1)
 					position = index;
@@ -59,38 +64,50 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 		super.update(elapsed);
 
 		var selected = selectable && focused;
-		if (autoAlpha) {
-			if(selectable) {
+		if (autoAlpha)
+		{
+			if (selectable)
+			{
 				alpha = label.alpha = 1;
-			} else {
+			}
+			else
+			{
 				alpha = label.alpha = 0.4;
 			}
 		}
 
 		var off = multiline ? 4 : ((bHeight - label.height) / 2);
-		label.follow(this, label.autoSize ? (bWidth-label.textField.width)/2 : 4, off);
+		label.follow(this, label.autoSize ? (bWidth - label.textField.width) / 2 : 4, off);
 		framesOffset = (selected ? 18 : (hovered ? 9 : 0));
 		@:privateAccess {
-			if (selected) {
+			if (selected)
+			{
 				__wasFocused = true;
 				caretSpr.alpha = (FlxG.game.ticks % 666) >= 333 ? 1 : 0;
 
-				var curPos = switch(position) {
+				var curPos = switch (position)
+				{
 					case 0:
 						FlxPoint.get(0, 0);
 					default:
-						if (position >= label.text.length) {
-							label.textField.__getCharBoundaries(label.text.length-1, cacheRect);
+						if (position >= label.text.length)
+						{
+							label.textField.__getCharBoundaries(label.text.length - 1, cacheRect);
 							FlxPoint.get(cacheRect.x + cacheRect.width, cacheRect.y);
-						} else {
+						}
+						else
+						{
 							label.textField.__getCharBoundaries(position, cacheRect);
 							FlxPoint.get(cacheRect.x, cacheRect.y);
 						}
 				};
 				caretSpr.follow(this, 4 + curPos.x, off + curPos.y);
 				curPos.put();
-			} else {
-				if (__wasFocused) {
+			}
+			else
+			{
+				if (__wasFocused)
+				{
 					__wasFocused = false;
 					if (onChange != null)
 						onChange(label.text);
@@ -100,64 +117,82 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 		}
 	}
 
-	public inline function isSeperator(char:String):Bool {
-		return char == " " || char == "\n" || char == "\t" || char == "\r"  || char == "-" || char == "_" || char == "," || char == "." || char == ";" || char == ":" || char == "!" || char == "?";
-	}
+	var seperators:Array<String> = [
+		" ", "\n", "\t", "\r", "-", "_", "=", "+", "/", "\\", "|", ",", ".", ";", ":", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "[", "]", "{", "}",
+	];
+	public inline function isSeperator(char:String):Bool
+		return seperators.contains(char);
 
-	public inline function findWholeWord(text:String, pos:Int):Null<Array<Int>> {
-		if (text.length == 0) return null;
+	public inline function findWholeWord(text:String, pos:Int):Null<Array<Int>>
+	{
+		if (text.length == 0)
+			return null;
 		var start = pos;
 		var end = pos;
 
-		while (start > 0 && !isSeperator(text.charAt(start-1)))
+		while (start > 0 && !isSeperator(text.charAt(start - 1)))
 			start--;
 
 		while (end < text.length && !isSeperator(text.charAt(end)))
 			end++;
 
-		if (isSeperator(text.charAt(text.length)))
-			end++;
+		// if seperator is at the end we want to remove it
+		if (end == pos && isSeperator(text.charAt(end - 1)))
+			start--;
 
 		return [start, end];
 	}
 
-	public function onKeyDown(e:KeyCode, modifier:KeyModifier) {
-		switch(e) {
+	public function onKeyDown(e:KeyCode, modifier:KeyModifier)
+	{
+		switch (e)
+		{
 			case RETURN:
 				focused = false;
-				if (onChange != null) onChange(label.text);
+				if (onChange != null)
+					onChange(label.text);
 			case LEFT:
-				if (modifier.ctrlKey){
+				if (modifier.ctrlKey)
+				{
 					position = 0;
-				} else {
+				}
+				else
+				{
 					changeSelection(-1);
 				}
 			case RIGHT:
-				if (modifier.ctrlKey){
+				if (modifier.ctrlKey)
+				{
 					position = label.text.length;
-				} else {
+				}
+				else
+				{
 					changeSelection(1);
 				}
 			case BACKSPACE:
 				FlxG.sound.play(Paths.sound(Flags.DEFAULT_EDITOR_TEXTREMOVE_SOUND));
 
-				if (modifier.ctrlKey){
+				if (modifier.ctrlKey)
+				{
 					var wordBounds = findWholeWord(label.text, position);
-					if (wordBounds != null) {
+					if (wordBounds != null)
+					{
 						label.text = label.text.substr(0, wordBounds[0]) + label.text.substr(wordBounds[1]);
 						position = wordBounds[0];
 					}
 					return;
 				}
 
-				if (position > 0) {
-					label.text = label.text.substr(0, position-1) + label.text.substr(position);
+				if (position > 0)
+				{
+					label.text = label.text.substr(0, position - 1) + label.text.substr(position);
 					changeSelection(-1);
 				}
 			case DELETE:
 				FlxG.sound.play(Paths.sound(Flags.DEFAULT_EDITOR_TEXTREMOVE_SOUND));
-				if (position < label.text.length) {
-					label.text = label.text.substr(0, position) + label.text.substr(position+1);
+				if (position < label.text.length)
+				{
+					label.text = label.text.substr(0, position) + label.text.substr(position + 1);
 				}
 			case HOME:
 				position = 0;
@@ -170,14 +205,17 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 				// apparently there is a boolean that just checks for you. yw :D
 
 				// if we are not holding ctrl, ignore
-				if (!modifier.ctrlKey) return;
+				if (!modifier.ctrlKey)
+					return;
 				// we pasting
 				var data:String = Clipboard.generalClipboard.getData(TEXT_FORMAT);
-				if (data != null) onTextInput(data);
+				if (data != null)
+					onTextInput(data);
 			case C:
 				FlxG.sound.play(Paths.sound(Flags.DEFAULT_EDITOR_TEXTTYPE_SOUND));
 				// if we are not holding ctrl, ignore
-				if (!modifier.ctrlKey) return;
+				if (!modifier.ctrlKey)
+					return;
 
 				// copying
 				Clipboard.generalClipboard.setData(TEXT_FORMAT, label.text);
@@ -185,7 +223,8 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 				FlxG.sound.play(Paths.sound(Flags.DEFAULT_EDITOR_TEXTTYPE_SOUND));
 
 				// if we are not holding ctrl, ignore
-				if (!modifier.ctrlKey) return;
+				if (!modifier.ctrlKey)
+					return;
 
 				// cutting
 				Clipboard.generalClipboard.setData(TEXT_FORMAT, label.text);
@@ -196,17 +235,24 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 		}
 	}
 
-	public function changeSelection(change:Int) {
+	public function changeSelection(change:Int)
+	{
 		position = Std.int(FlxMath.bound(position + change, 0, label.text.length));
 	}
-	public function onKeyUp(e:KeyCode, modifier:KeyModifier) {}
 
-	public function onTextInput(text:String):Void {
+	public function onKeyUp(e:KeyCode, modifier:KeyModifier)
+	{
+	}
+
+	public function onTextInput(text:String):Void
+	{
 		label.text = label.text.substr(0, position) + text + label.text.substr(position);
 		position += text.length;
 	}
+
 	// untested, but this should be a fix for if the text wont type
-	public function onTextEdit(text:String, start:Int, end:Int):Void {
+	public function onTextEdit(text:String, start:Int, end:Int):Void
+	{
 		label.text = label.text.substr(0, position) + text + label.text.substr(position);
 		position += text.length;
 	}
