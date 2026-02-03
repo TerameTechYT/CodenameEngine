@@ -10,7 +10,7 @@ import funkin.backend.system.Conductor;
 class FNFLegacyParser
 {
 	// raw vs shaggy compat
-	static var MANIA_TO_KEY_COUNT:Array<Int> = [4, 6, 7, 9];
+	static var MANIA_TO_KEY_COUNT:Array<Int> = [4, 6, 9];
 
 	public static function parse(data:Dynamic, result:ChartData)
 	{

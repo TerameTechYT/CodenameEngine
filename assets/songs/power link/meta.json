@@ -1,0 +1,16 @@
+{
+	"customValues": {},
+	"color": "#9271FD",
+	"opponentModeAllowed": false,
+	"difficulties": [
+		"canon",
+		"easy"
+	],
+	"icon": "shaggy_red",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Power Link",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 240
+}

@@ -1,0 +1,17 @@
+{
+	"customValues": {},
+	"color": "#9271FD",
+	"opponentModeAllowed": false,
+	"difficulties": [
+		"god",
+		"canon",
+		"easy"
+	],
+	"icon": "shaggy_matt",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Final Destination",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 300
+}

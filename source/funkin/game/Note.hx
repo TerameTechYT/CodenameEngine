@@ -182,6 +182,12 @@ class Note extends FlxSprite
 		this.animSuffix = event.animSuffix;
 		if (!event.cancelled)
 		{
+			switch (event.noteType){
+				case "Death Note":
+					event.noteSprite =
+				default:
+			}
+
 			switch (event.noteType)
 			{
 				// case "My Custom Note Type": // hardcoding note types
