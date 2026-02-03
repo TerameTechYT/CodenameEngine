@@ -118,8 +118,10 @@ class UITextBox extends UISliceSprite implements IUIFocusable
 	}
 
 	var seperators:Array<String> = [
-		" ", "\n", "\t", "\r", "-", "_", "=", "+", "/", "\\", "|", ",", ".", ";", ":", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "[", "]", "{", "}",
+		" ", "\n", "\t", "\r", "-", "_", "=", "+", "/", "\\", "|", ",", ".", ";", ":", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", "[", "]", "{",
+		"}",
 	];
+
 	public inline function isSeperator(char:String):Bool
 		return seperators.contains(char);
 
