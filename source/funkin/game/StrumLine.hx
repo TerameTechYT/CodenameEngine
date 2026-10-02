@@ -397,17 +397,235 @@ class StrumLine extends FlxTypedGroup<Strum> {
 
 		if (!event.cancelled) {
 			babyArrow.frames = Paths.getFrames(event.sprite);
-			babyArrow.animation.addByPrefix('green', 'arrowUP');
-			babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
-			babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
-			babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
+			// babyArrow.animation.addByPrefix('green', 'arrowUP');
+			// babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
+			// babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
+			// babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
+
+			// TODO: use xml data for strum anims
+			switch (event.strum.strumLine.data.keyCount != null ? event.strum.strumLine.data.keyCount : Flags.DEFAULT_STRUM_AMOUNT)
+			{
+				case 1:
+					babyArrow.animation.addByPrefix('static', 'square static');
+					babyArrow.animation.addByPrefix('confirm', 'square confirm', 24, false);
+					babyArrow.animation.addByPrefix('pressed', 'square press', 24, false);
+				case 2:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+					}
+				case 3:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'square static');
+							babyArrow.animation.addByPrefix('confirm', 'square confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'square press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+					}
+				case 4:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+					}
+				case 5:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'square static');
+							babyArrow.animation.addByPrefix('confirm', 'square confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'square press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 4:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+					}
+				case 6:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left2 press', 24, false);
+						case 4:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 5:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right2 press', 24, false);
+					}
+				case 7:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'square static');
+							babyArrow.animation.addByPrefix('confirm', 'square confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'square press', 24, false);
+						case 4:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left2 press', 24, false);
+						case 5:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 6:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right2 press', 24, false);
+					}
+				case 8:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+						case 4:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left2 press', 24, false);
+						case 5:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down2 press', 24, false);
+						case 6:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up2 press', 24, false);
+						case 7:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right2 press', 24, false);
+					}
+				case 9:
+					switch (i)
+					{
+						case 0:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+						case 1:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+						case 2:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+						case 3:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+						case 4:
+							babyArrow.animation.addByPrefix('static', 'square static');
+							babyArrow.animation.addByPrefix('confirm', 'square confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'square press', 24, false);
+						case 5:
+							babyArrow.animation.addByPrefix('static', 'left static');
+							babyArrow.animation.addByPrefix('confirm', 'left2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'left2 press', 24, false);
+						case 6:
+							babyArrow.animation.addByPrefix('static', 'down static');
+							babyArrow.animation.addByPrefix('confirm', 'down2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'down2 press', 24, false);
+						case 7:
+							babyArrow.animation.addByPrefix('static', 'up static');
+							babyArrow.animation.addByPrefix('confirm', 'up2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'up2 press', 24, false);
+						case 8:
+							babyArrow.animation.addByPrefix('static', 'right static');
+							babyArrow.animation.addByPrefix('confirm', 'right2 confirm', 24, false);
+							babyArrow.animation.addByPrefix('pressed', 'right2 press', 24, false);
+					}
+			}
+
 
 			babyArrow.antialiasing = true;
 			babyArrow.setGraphicSize(Std.int((babyArrow.width * Flags.DEFAULT_NOTE_SCALE) * strumScale));
 
-			babyArrow.animation.addByPrefix('static', 'arrow${event.animPrefix.toUpperCase()}');
-			babyArrow.animation.addByPrefix('pressed', '${event.animPrefix} press', 24, false);
-			babyArrow.animation.addByPrefix('confirm', '${event.animPrefix} confirm', 24, false);
+			// babyArrow.animation.addByPrefix('static', 'arrow${event.animPrefix.toUpperCase()}');
+			// babyArrow.animation.addByPrefix('pressed', '${event.animPrefix} press', 24, false);
+			// babyArrow.animation.addByPrefix('confirm', '${event.animPrefix} confirm', 24, false);
 		}
 
 		babyArrow.cpu = cpu;

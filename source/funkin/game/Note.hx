@@ -165,28 +165,225 @@ class Note extends FlxSprite
 			switch (event.noteType)
 			{
 				// case "My Custom Note Type": // hardcoding note types
+				// TODO: use xml for note data
 				default:
 					frames = Paths.getFrames(event.noteSprite);
 
-					switch(event.strumID % 4) {
-						case 0:
-							animation.addByPrefix('scroll', 'purple0');
-							animation.addByPrefix('hold', 'purple hold piece');
-							animation.addByPrefix("holdend", "pruple end hold");
-							if (animation.exists("holdend") != true) // null or false
-								animation.addByPrefix('holdend', 'purple hold end');
+					switch (event.note.strumLine.members.length)
+					{
 						case 1:
-							animation.addByPrefix('scroll', 'blue0');
-							animation.addByPrefix('hold', 'blue hold piece');
-							animation.addByPrefix('holdend', 'blue hold end');
+							animation.addByPrefix('scroll', 'square0');
+							animation.addByPrefix('hold', 'square hold0');
+							animation.addByPrefix("holdend", "square hold end0");
 						case 2:
-							animation.addByPrefix('scroll', 'green0');
-							animation.addByPrefix('hold', 'green hold piece');
-							animation.addByPrefix('holdend', 'green hold end');
+							switch (event.strumID)
+							{
+								case 0:
+									animation.addByPrefix('scroll', 'left0');
+									animation.addByPrefix('hold', 'left hold0');
+									animation.addByPrefix("holdend", "left hold end0");
+								case 1:
+									animation.addByPrefix('scroll', 'right0');
+									animation.addByPrefix('hold', 'right hold0');
+									animation.addByPrefix('holdend', 'right hold end0');
+							}
 						case 3:
-							animation.addByPrefix('scroll', 'red0');
-							animation.addByPrefix('hold', 'red hold piece');
-							animation.addByPrefix('holdend', 'red hold end');
+							switch (event.strumID)
+							{
+								case 0:
+									animation.addByPrefix('scroll', 'left0');
+									animation.addByPrefix('hold', 'left hold');
+									animation.addByPrefix("holdend", "left hold end0");
+								case 1:
+									animation.addByPrefix('scroll', 'square0');
+									animation.addByPrefix('hold', 'square hold0');
+									animation.addByPrefix("holdend", "square hold end0");
+								case 2:
+									animation.addByPrefix('scroll', 'right0');
+									animation.addByPrefix('hold', 'right hold0');
+									animation.addByPrefix('holdend', 'right hold end0');
+							}
+						case 4:
+							switch (event.strumID)
+							{
+								case 0:
+									animation.addByPrefix('scroll', 'left0');
+									animation.addByPrefix('hold', 'left hold0');
+									animation.addByPrefix("holdend", "left hold end0");
+								case 1:
+									animation.addByPrefix('scroll', 'down0');
+									animation.addByPrefix('hold', 'down hold0');
+									animation.addByPrefix("holdend", "down hold end0");
+								case 2:
+									animation.addByPrefix('scroll', 'up0');
+									animation.addByPrefix('hold', 'up hold0');
+									animation.addByPrefix("holdend", "up hold end0");
+								case 3:
+									animation.addByPrefix('scroll', 'right0');
+									animation.addByPrefix('hold', 'right hold0');
+									animation.addByPrefix('holdend', 'right hold end0');
+							}
+						case 5:
+							switch (event.strumID)
+							{
+								case 0:
+									animation.addByPrefix('scroll', 'left0');
+									animation.addByPrefix('hold', 'left hold0');
+									animation.addByPrefix("holdend", "left hold end0");
+								case 1:
+									animation.addByPrefix('scroll', 'down0');
+									animation.addByPrefix('hold', 'down hold0');
+									animation.addByPrefix("holdend", "down hold end0");
+								case 2:
+									animation.addByPrefix('scroll', 'square0');
+									animation.addByPrefix('hold', 'square hold0');
+									animation.addByPrefix("holdend", "square hold end0");
+								case 3:
+									animation.addByPrefix('scroll', 'up0');
+									animation.addByPrefix('hold', 'up hold0');
+									animation.addByPrefix("holdend", "up hold end0");
+								case 4:
+									animation.addByPrefix('scroll', 'right0');
+									animation.addByPrefix('hold', 'right hold0');
+									animation.addByPrefix('holdend', 'right hold end0');
+							}
+						case 6:
+							switch (event.strumID)
+							{
+								case 0:
+									animation.addByPrefix('scroll', 'left0');
+									animation.addByPrefix('hold', 'left hold0');
+									animation.addByPrefix("holdend", "left hold end0");
+
+								case 1:
+									animation.addByPrefix('scroll', 'up0');
+									animation.addByPrefix('hold', 'up hold0');
+									animation.addByPrefix("holdend", "up hold end0");
+								case 2:
+									animation.addByPrefix('scroll', 'right0');
+									animation.addByPrefix('hold', 'right hold0');
+									animation.addByPrefix("holdend", "right hold end0");
+								case 3:
+									animation.addByPrefix('scroll', 'left20');
+									animation.addByPrefix('hold', 'left2 hold0');
+									animation.addByPrefix("holdend", "left2 hold end0");
+								case 4:
+									animation.addByPrefix('scroll', 'down0');
+									animation.addByPrefix('hold', 'down hold0');
+									animation.addByPrefix("holdend", "down hold end0");
+								case 5:
+									animation.addByPrefix('scroll', 'right20');
+									animation.addByPrefix('hold', 'right2 hold0');
+									animation.addByPrefix("holdend", "right2 hold end0");
+							}
+						case 7:
+							switch (event.strumID)
+							{
+								case 0:
+									animation.addByPrefix('scroll', 'left0');
+									animation.addByPrefix('hold', 'left hold0');
+									animation.addByPrefix("holdend", "left hold end0");
+								case 1:
+									animation.addByPrefix('scroll', 'up0');
+									animation.addByPrefix('hold', 'up hold0');
+									animation.addByPrefix("holdend", "up hold end0");
+								case 2:
+									animation.addByPrefix('scroll', 'right0');
+									animation.addByPrefix('hold', 'right hold0');
+									animation.addByPrefix("holdend", "right hold end0");
+								case 3:
+									animation.addByPrefix('scroll', 'square0');
+									animation.addByPrefix('hold', 'square hold0');
+									animation.addByPrefix("holdend", "square hold end0");
+								case 4:
+									animation.addByPrefix('scroll', 'left20');
+									animation.addByPrefix('hold', 'left2 hold0');
+									animation.addByPrefix("holdend", "left2 hold end0");
+								case 5:
+									animation.addByPrefix('scroll', 'down0');
+									animation.addByPrefix('hold', 'down hold0');
+									animation.addByPrefix("holdend", "down hold end0");
+								case 6:
+									animation.addByPrefix('scroll', 'right20');
+									animation.addByPrefix('hold', 'right2 hold0');
+									animation.addByPrefix("holdend", "right2 hold end0");
+							}
+						case 8:
+							switch (event.strumID)
+							{
+								case 0:
+									animation.addByPrefix('scroll', 'left0');
+									animation.addByPrefix('hold', 'left hold0');
+									animation.addByPrefix("holdend", "left hold end0");
+								case 1:
+									animation.addByPrefix('scroll', 'down0');
+									animation.addByPrefix('hold', 'down hold0');
+									animation.addByPrefix("holdend", "down hold end0");
+								case 2:
+									animation.addByPrefix('scroll', 'up0');
+									animation.addByPrefix('hold', 'up hold0');
+									animation.addByPrefix("holdend", "up hold end0");
+								case 3:
+									animation.addByPrefix('scroll', 'right0');
+									animation.addByPrefix('hold', 'right hold0');
+									animation.addByPrefix("holdend", "right hold end0");
+								case 4:
+									animation.addByPrefix('scroll', 'left20');
+									animation.addByPrefix('hold', 'left2 hold0');
+									animation.addByPrefix("holdend", "left2 hold end0");
+								case 5:
+									animation.addByPrefix('scroll', 'down20');
+									animation.addByPrefix('hold', 'down2 hold0');
+									animation.addByPrefix("holdend", "down2 hold end0");
+								case 6:
+									animation.addByPrefix('scroll', 'up20');
+									animation.addByPrefix('hold', 'up2 hold0');
+									animation.addByPrefix("holdend", "up2 hold end0");
+								case 7:
+									animation.addByPrefix('scroll', 'right20');
+									animation.addByPrefix('hold', 'right2 hold0');
+									animation.addByPrefix("holdend", "right2 hold end0");
+							}
+						case 9:
+							switch (event.strumID)
+							{
+								case 0:
+									animation.addByPrefix('scroll', 'left0');
+									animation.addByPrefix('hold', 'left hold0');
+									animation.addByPrefix("holdend", "left hold end0");
+								case 1:
+									animation.addByPrefix('scroll', 'down0');
+									animation.addByPrefix('hold', 'down hold0');
+									animation.addByPrefix("holdend", "down hold end0");
+								case 2:
+									animation.addByPrefix('scroll', 'up0');
+									animation.addByPrefix('hold', 'up hold0');
+									animation.addByPrefix("holdend", "up hold end0");
+								case 3:
+									animation.addByPrefix('scroll', 'right0');
+									animation.addByPrefix('hold', 'right hold0');
+									animation.addByPrefix("holdend", "right hold end0");
+								case 4:
+									animation.addByPrefix('scroll', 'square0');
+									animation.addByPrefix('hold', 'square hold0');
+									animation.addByPrefix("holdend", "square hold end0");
+								case 5:
+									animation.addByPrefix('scroll', 'left20');
+									animation.addByPrefix('hold', 'left2 hold0');
+									animation.addByPrefix("holdend", "left2 hold end0");
+								case 6:
+									animation.addByPrefix('scroll', 'down20');
+									animation.addByPrefix('hold', 'down2 hold0');
+									animation.addByPrefix("holdend", "down2 hold end0");
+								case 7:
+									animation.addByPrefix('scroll', 'up20');
+									animation.addByPrefix('hold', 'up2 hold0');
+									animation.addByPrefix("holdend", "up2 hold end0");
+								case 8:
+									animation.addByPrefix('scroll', 'right20');
+									animation.addByPrefix('hold', 'right2 hold0');
+									animation.addByPrefix("holdend", "right2 hold end0");
+							}
 					}
 
 					scale.set(event.noteScale, event.noteScale);
@@ -213,7 +410,7 @@ class Note extends FlxSprite
 		}
 
 		if (PlayState.instance != null) {
-			PlayState.instance.splashHandler.getSplashGroup(splash);
+			PlayState.instance.splashHandler.getSplashGroup(splash, event.note.strumLine.members.length);
 			PlayState.instance.gameAndCharsEvent("onPostNoteCreation", event);
 		}
 	}

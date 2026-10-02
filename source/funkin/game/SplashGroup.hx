@@ -17,13 +17,13 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 	 * Animation names sorted by strum IDs.
 	 * Use `getSplashAnim` to get one.
 	 */
-	public var animationNames:Array<Array<String>> = [];
+	public var animationNames:Array<Array<Array<String>>> = [];
 
 	/**
 	 * Creates a new Splash group
 	 * @param path Path to the splash data (xml)
 	 */
-	public function new(path:String) {
+	public function new(path:String, size:Int) {
 		super();
 
 		try {
@@ -32,7 +32,7 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 			if (!xml.has.sprite) throw "The <splash> element requires a sprite attribute.";
 			var splash = createSplash(xml.att.sprite);
 			setupAnims(xml, splash);
-			pregenerateSplashes(splash);
+			pregenerateSplashes(splash, size - 1);
 			add(splash);
 
 			// immediately draw once and put image in GPU to prevent freezes
@@ -43,7 +43,7 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 			Logs.error('Couldn\'t parse splash data for "${path}": ${e.toString()}');
 			valid = false;
 		}
-		maxSize = Flags.MAX_SPLASHES;
+		maxSize = size;
 	}
 
 	var _scale:Float = 1.0;
@@ -61,29 +61,49 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 	}
 
 	function setupAnims(xml:Access, splash:Splash) {
-		for(strum in xml.nodes.strum) {
-			var id:Null<Int> = Std.parseInt(strum.att.id);
-			if (id != null) {
-				animationNames[id] = [];
-				for(anim in strum.nodes.anim) {
-					if (!anim.has.name) continue;
-					XMLUtil.addXMLAnimation(splash, anim, false);
-					animationNames[id].push(anim.att.name);
-				}
-			}
-		}
+		// for(strum in xml.nodes.strum) {
+		// 	var id:Null<Int> = Std.parseInt(strum.att.id);
+		// 	if (id != null) {
+		// 		animationNames[id] = [];
+		// 		for(anim in strum.nodes.anim) {
+		// 			if (!anim.has.name) continue;
+		// 			XMLUtil.addXMLAnimation(splash, anim, false);
+		// 			animationNames[id].push(anim.att.name);
+		// 		}
+		// 	}
+		// }
 
 		// if (animationNames.length <= 0)
 		//		animationNames.push([]);
 
-		for(anim in xml.nodes.anim) {
-			if (!anim.has.name) continue;
-			XMLUtil.addXMLAnimation(splash, anim, false);
-			for(a in animationNames) {
-				if (a == null) continue;
-				a.push(anim.att.name);
+		// for(anim in xml.nodes.anim) {
+		// 	if (!anim.has.name) continue;
+		// 	XMLUtil.addXMLAnimation(splash, anim, false);
+		// 	for(a in animationNames) {
+		// 		if (a == null) continue;
+		// 		a.push(anim.att.name);
+		// 	}
+		// }
+
+		for (group in xml.nodes.group){
+			if (!group.has.id) continue;
+			var id:Int = Std.parseInt(group.att.id);
+
+			animationNames[id] = [];
+			for(strum in group.nodes.strum) {
+				if (!strum.has.id) continue;
+				var strumID:Int = Std.parseInt(strum.att.id);
+
+				animationNames[id][strumID] = [];
+				for(anim in strum.nodes.anim) {
+					if (!anim.has.name) continue;
+
+					XMLUtil.addXMLAnimation(splash, anim, false);
+					animationNames[id][strumID].push(anim.att.name);
+				}
 			}
 		}
+
 		splash.animation.finishCallback = function(name:String) {
 			splash.active = splash.visible = false;
 			splash.strum = null;
@@ -91,10 +111,11 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 		};
 	}
 
-	function pregenerateSplashes(splash:Splash) {
+	function pregenerateSplashes(splash:Splash, size:Int) {
 		// TODO: Fix a crash somewhere here https://github.com/CodenameCrew/CodenameEngine/pull/963
-		for (i in 0...Flags.MAX_SPLASHES - 1) {
+		for (i in 0...size) {
 			var spr = Splash.copyFrom(splash);
+			spr.ID = i;
 			spr.animation.finishCallback = function(name:String) {
 				spr.active = spr.visible = false;
 				spr.strum = null;
@@ -104,12 +125,16 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 		}
 	}
 
-	public function getSplashAnim(id:Int):String {
-		if (animationNames.length <= 0) return null;
-		id %= animationNames.length;
-		var animNames = animationNames[id];
-		if (animNames == null || animNames.length <= 0) return null;
-		return animNames[FlxG.random.int(0, animNames.length - 1)];
+	// public function getSplashAnim(id:Int):String {
+	// 	if (animationNames.length <= 0) return null;
+	// 	id %= animationNames.length;
+	// 	var animNames = animationNames[id];
+	// 	if (animNames == null || animNames.length <= 0) return null;
+	// 	return animNames[FlxG.random.int(0, animNames.length - 1)];
+	// }
+
+	public function getSplashAnim(size:Int, id:Int):String {
+		return animationNames[size][id][FlxG.random.int(0, animationNames[size][id].length - 1)];
 	}
 
 	var __splash:Splash;
@@ -128,7 +153,7 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 		__splash.cameras = strum.lastDrawCameras;
 		__splash.setPosition(strum.x + 0.5 * (strum.width - __splash.width), strum.y + 0.5 * (strum.height - __splash.height));
 		__splash.active = __splash.visible = true;
-		__splash.playAnim(getSplashAnim(strum.ID), true);
+		__splash.playAnim(getSplashAnim(strum.strumLine.members.length - 1, strum.ID), true);
 		__splash.scrollFactor.set(strum.scrollFactor.x, strum.scrollFactor.y);
 
 		return __splash;
