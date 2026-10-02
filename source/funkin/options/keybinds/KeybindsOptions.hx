@@ -30,8 +30,8 @@ class KeybindsOptions extends MusicBeatSubstate {
 
 	public var categories:Array<ControlsCategory> = [];
 	public static var defaultCategories:Array<ControlsCategory> = [
-		{
-			/*name: "category.notes",
+		/*{
+			name: "category.notes",
 			settings: [
 				{
 					sparrowIcon: "game/notes/default",
