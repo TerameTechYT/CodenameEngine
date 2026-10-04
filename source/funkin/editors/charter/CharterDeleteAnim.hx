@@ -89,14 +89,14 @@ class CharterDeleteAnim extends CharterNote {
 			origin.set(deleteData.note.origin.x, deleteData.note.origin.y);
 			frameOffset.set(deleteData.note.frameOffset.x, deleteData.note.frameOffset.y);
 
-			if (!deleteData.note.noDefaultAnims) {
-				frame = __lastFrame;
-				angle = deleteData.note.angle;
-				animation.curAnim.curFrame = 3;
-				color = __lastColor;
-			} else {
-				frame = deleteData.note.frame;
-			}
+			// if (!deleteData.note.noDefaultAnims) {
+			// 	frame = __lastFrame;
+			// 	angle = deleteData.note.angle;
+			// 	animation.curAnim.curFrame = 3;
+			// 	color = __lastColor;
+			// } else {
+			// 	frame = deleteData.note.frame;
+			// }
 			alpha = 1;
 
 			sustainSpr.scale.set(10, (40 * (deleteData.note.susLength-1)) + (height/2));

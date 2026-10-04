@@ -7,6 +7,15 @@
 		"*.hsc": "haxe",
 		"*.hxs": "haxe"
 	},
+
+	"haxe.enableServerView": true,
+
+	"files.watcherExclude": {
+    	"**/export/**": true,
+    	"**/.haxelib/**": true,
+    	"**/.git/objects/**": true
+	},
+	
 	"lime.targetConfigurations": [
 		{
 			"label": "Windows (Test Build)",

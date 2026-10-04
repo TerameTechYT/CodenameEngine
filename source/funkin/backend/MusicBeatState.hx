@@ -2,6 +2,7 @@ package funkin.backend;
 
 import flixel.FlxState;
 import flixel.FlxSubState;
+import funkin.backend.utils.MultikeyUtil;
 import funkin.backend.scripting.DummyScript;
 import funkin.backend.scripting.Script;
 import funkin.backend.scripting.ScriptPack;
@@ -124,6 +125,8 @@ class MusicBeatState extends FlxState implements IBeatCancellableReceiver
 		}
 		this.scriptName = scriptName != null ? scriptName : lastScriptName;
 		lastScriptName = this.scriptName;
+
+		MultikeyUtil.init();
 	}
 
 	function loadScript() {

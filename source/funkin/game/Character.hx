@@ -273,20 +273,10 @@ class Character extends FunkinSprite implements IBeatReceiver implements IOffset
 	}
 
 	// TODO: use xml data for sing animations
-	public var singAnims = [
-		["singUP"],
-		["singLEFT", "singRIGHT"],
-		["singLEFT", "singUP", "singRIGHT"],
-		["singLEFT", "singDOWN", "singUP", "singRIGHT"],
-		["singLEFT", "singDOWN", "singDOWN", "singUP", "singRIGHT"],
-		["singLEFT", "singUP", "singRIGHT", "singLEFT", "singDOWN", "singRIGHT"],
-		["singLEFT", "singUP", "singRIGHT", "singUP", "singLEFT", "singDOWN", "singRIGHT"],
-		["singLEFT", "singDOWN", "singUP", "singRIGHT", "singLEFT", "singDOWN", "singUP", "singRIGHT"],
-		["singLEFT", "singDOWN", "singUP", "singRIGHT", "singUP", "singLEFT", "singDOWN", "singUP", "singRIGHT"],
-	];
+	public var singAnims = ["singLEFT", "singDOWN", "singUP", "singRIGHT"];
 	public inline function getSingAnim(direction:Int, suffix:String = ""):String {
 		var kc = __strumLine != null && __strumLine.data.keyCount != null ? __strumLine.data.keyCount - 1 : Flags.DEFAULT_STRUM_AMOUNT - 1;
-		return singAnims[kc][direction] + suffix;
+		return singAnims[MultikeyUtil.getSingAnimation(kc, direction)] + suffix;
 	}
 
 	/**
