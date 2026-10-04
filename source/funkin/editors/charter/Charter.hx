@@ -369,6 +369,11 @@ class Charter extends UIState {
 						keybind: [SPACE],
 						onSelect: _playback_play
 					},
+					{
+						label: translate("playback.snap"),
+						onSelect: _playback_snap,
+						icon: Options.charterPauseQuant ? 1 : 0
+					},
 					null,
 					{
 						label: translate("playback.speedRaise", ["25"]),
@@ -1956,6 +1961,7 @@ class Charter extends UIState {
 			FlxG.sound.music.pause();
 			vocals.pause();
 			for (strumLine in strumLines.members) strumLine.vocals.pause();
+			if (Options.charterPauseQuant) Conductor.songPosition = Conductor.getTimeForStep(quantStep(Conductor.curStepFloat));
 		} else {
 			FlxG.sound.music.play(true, Conductor.songPosition + Conductor.songOffset);
 			vocals.play(true, FlxG.sound.music.getActualTime());
@@ -1963,6 +1969,9 @@ class Charter extends UIState {
 				strumLine.vocals.play(true, FlxG.sound.music.getActualTime());
 			}
 		}
+	}
+	function _playback_snap(t) {
+		t.icon = (Options.charterPauseQuant = !Options.charterPauseQuant) ? 1 : 0;
 	}
 
 	function _playback_speed_raise(_) playBackSlider.value += .25;
