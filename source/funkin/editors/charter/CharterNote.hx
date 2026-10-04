@@ -13,13 +13,12 @@ class CharterNote extends UISprite implements ICharterSelectable {
 	var __animSpeed:Float = 1;
 	var __susInstaLerp:Bool = false;
 
-	private static var colors:Array<FlxColor> = [
-		0xFFC24B99,
-		0xFF00FFFF,
-		0xFF12FA05,
-		0xFFF9393F
-	];
-
+	// private static var colors:Array<FlxColor> = [
+	// 	0xFFC24B99,
+	// 	0xFF00FFFF,
+	// 	0xFF12FA05,
+	// 	0xFFF9393F
+	// ];
 	public var noDefaultAnims:Bool = false;
 	public var sustainSpr:UISprite;
 	public var tempSusLength:Float = 0;
@@ -44,10 +43,9 @@ class CharterNote extends UISprite implements ICharterSelectable {
 	public function new() {
 		super();
 
-		antialiasing = true; ID = -1;
-		loadGraphic(Paths.image('editors/charter/note'), true, 157, 154);
-		animation.add("note", [for(i in 0...frames.frames.length) i], 0, true);
-		animation.play("note");
+		antialiasing = true;
+		ID = -1;
+		frames = Paths.getFrames("game/notes/default");
 		this.setUnstretchedGraphicSize(40, 40, false);
 
 		sustainSpr = new UISprite(10, 20);
@@ -79,11 +77,11 @@ class CharterNote extends UISprite implements ICharterSelectable {
 	public var typeAlpha:Float = 1;
 
 	function set_type(v:Null<Int>) {
-		if(v != this.type) {
-			if(noteTypeTexts[v] == null || noteTypeTexts[v].graphic.isDestroyed) {
+		if (v != this.type) {
+			if (noteTypeTexts[v] == null || noteTypeTexts[v].graphic.isDestroyed) {
 				noteTypeTexts[v] = new UIText(x, y, 0, Std.string(v));
 				noteTypeTexts[v].exists = v != 0;
-				//noteTypeTexts[v].layer = (Charter.instance != null) ? Charter.instance.textLayer : null;
+				// noteTypeTexts[v].layer = (Charter.instance != null) ? Charter.instance.textLayer : null;
 			}
 
 			typeText = noteTypeTexts[v];
@@ -93,12 +91,14 @@ class CharterNote extends UISprite implements ICharterSelectable {
 
 	public var strumLine:CharterStrumline;
 	public var strumLineID(get, default):Int = -1;
+
 	public function get_strumLineID():Int
 		return strumLineID = (strumLine == null ? strumLineID : Charter.instance.strumLines.members.indexOf(strumLine));
 
 	public var snappedToGrid:Bool = true;
 
 	public var fullID(get, never):Int; // instead of %4 get fullID (for mousepos stuff)
+
 	public function get_fullID():Int
 		return strumLine.startingID + id;
 
@@ -107,74 +107,82 @@ class CharterNote extends UISprite implements ICharterSelectable {
 		this.id = id;
 		this.susLength = Math.max(susLength, 0);
 		this.type = type;
-		if (strumLine != null) this.strumLine = strumLine;
+		if (strumLine != null) {
+			this.strumLine = strumLine;
+			updateAnims();
+		}
 
 		sustainSpr.exists = susLength != 0;
 
 		y = step * 40;
 
-		if (angleTween != null) angleTween.cancel();
+		if (angleTween != null)
+			angleTween.cancel();
 
 		if (noDefaultAnims) {
 			// angle = 0;
 			return callScriptOnNote('onCharterNoteUpdatePos', this);
 		}
 
-		var destAngle:Float = switch(animation.curAnim.curFrame = (id % 4)) {
-			case 0: 270;
-			case 1: 180;
-			case 2: 0;
-			case 3: 90;
-			default: 0; // how is that even possible
-		};
+		// var destAngle:Float = switch(animation.curAnim.curFrame = (id % 4)) {
+		// 	case 0: 270;
+		// 	case 1: 180;
+		// 	case 2: 0;
+		// 	case 3: 90;
+		// 	default: 0; // how is that even possible
+		// };
 
-		sustainSpr.color = colors[animation.curAnim.curFrame];
+		// sustainSpr.color = colors[animation.curAnim.curFrame];
 
-		if (!__doAnim) {
-			angle = destAngle;
-			return callScriptOnNote('onCharterNoteUpdatePos', this);
-		}
+		// if (!__doAnim) {
+		// 	angle = destAngle;
+		// 	return callScriptOnNote('onCharterNoteUpdatePos', this);
+		// }
 
-		if (angle == destAngle) return callScriptOnNote('onCharterNoteUpdatePos', this);
+		// if (angle == destAngle) return callScriptOnNote('onCharterNoteUpdatePos', this);
 
-		if(angleTween != null)
-			angleTween.cancel();
+		// if(angleTween != null)
+		// 	angleTween.cancel();
 
-		destAngle = CoolUtil.getClosestAngle(angle, destAngle);
-		
-		angleTween = FlxTween.angle(this, angle, destAngle, (2/3)/__animSpeed, {ease: function(t) {
-			return ((Math.sin(t * Math.PI) * 0.35) * 3 * t * Math.sqrt(1 - t)) + t;
-		}});
-		
+		// destAngle = CoolUtil.getClosestAngle(angle, destAngle);
+
+		// angleTween = FlxTween.angle(this, angle, destAngle, (2/3)/__animSpeed, {ease: function(t) {
+		// 	return ((Math.sin(t * Math.PI) * 0.35) * 3 * t * Math.sqrt(1 - t)) + t;
+		// }});
+
 		callScriptOnNote('onCharterNoteUpdatePos', this);
 	}
 
 	public override function kill() {
-		if (!noDefaultAnims) {
-			if (angleTween != null) {
-				angleTween.cancel();
-				angleTween = null;
-				angle = switch(animation.curAnim.curFrame = (id % 4)) {
-					case 0: 270;
-					case 1: 180;
-					case 2: 0;
-					case 3: 90;
-					default: 0; // how is that even possible
-				};
-				__doAnim = false;
-			}
-		}
+		// if (!noDefaultAnims) {
+		// 	if (angleTween != null) {
+		// 		angleTween.cancel();
+		// 		angleTween = null;
+		// 		angle = switch(animation.curAnim.curFrame = (id % 4)) {
+		// 			case 0: 270;
+		// 			case 1: 180;
+		// 			case 2: 0;
+		// 			case 3: 90;
+		// 			default: 0; // how is that even possible
+		// 		};
+		// 		__doAnim = false;
+		// 	}
+		// }
 		super.kill();
 	}
 
 	var __passed:Bool = false;
 	var __selected:Bool = false;
+
+	var __prevKeyCount:Int = 4;
+	var __prevId:Int = 4;
+
 	public override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		if(susLength != 0) {
-			var sprLength:Float = (40 * (susLength-1+tempSusLength)) + ((susLength+tempSusLength) != 0 ? (height/2) : 0);
-			sustainSpr.scale.set(10, __susInstaLerp ? sprLength : CoolUtil.fpsLerp(sustainSpr.scale.y, sprLength, 1/2));
+		if (susLength != 0) {
+			var sprLength:Float = (40 * (susLength - 1 + tempSusLength)) + ((susLength + tempSusLength) != 0 ? (height / 2) : 0);
+			sustainSpr.scale.set(10, __susInstaLerp ? sprLength : CoolUtil.fpsLerp(sustainSpr.scale.y, sprLength, 1 / 2));
 			sustainSpr.updateHitbox();
 			sustainSpr.follow(this, 15, 20);
 		}
@@ -207,6 +215,13 @@ class CharterNote extends UISprite implements ICharterSelectable {
 
 		alpha = susLength == 1 ? 0.6 : alpha;
 		__doAnim = true;
+
+		if (strumLine != null && (__prevId != this.id || __prevKeyCount != this.strumLine.keyCount)) {
+			updateAnims();
+
+			__prevId = this.id;
+			__prevKeyCount = this.strumLine.keyCount;
+		}
 	}
 
 	public function handleSelection(selectionBox:UISliceSprite):Bool {
@@ -219,8 +234,8 @@ class CharterNote extends UISprite implements ICharterSelectable {
 	}
 
 	public function handleDrag(change:FlxPoint) {
-		var newStep = CoolUtil.bound(step + change.x, 0, Charter.instance.__endStep-1);
-		var newID:Int = Std.int(FlxMath.bound(fullID + Std.int(change.y), 0, Charter.instance.strumLines.totalKeyCount-1));
+		var newStep = CoolUtil.bound(step + change.x, 0, Charter.instance.__endStep - 1);
+		var newID:Int = Std.int(FlxMath.bound(fullID + Std.int(change.y), 0, Charter.instance.strumLines.totalKeyCount - 1));
 		var newStrumLine = Charter.instance.strumLines.getStrumlineFromID(newID);
 
 		updatePos(newStep, (newID - newStrumLine.startingID) % newStrumLine.keyCount, susLength, type, newStrumLine);
@@ -236,10 +251,17 @@ class CharterNote extends UISprite implements ICharterSelectable {
 	}
 
 	public inline function drawNoteTypeText() {
-		if(typeText.exists && typeText.visible && typeVisible) {
+		if (typeText.exists && typeText.visible && typeVisible) {
 			typeText.alpha = typeAlpha;
-			typeText.follow(this, 20 - (typeText.frameWidth/2), 20 - (typeText.frameHeight/2));
+			typeText.follow(this, 20 - (typeText.frameWidth / 2), 20 - (typeText.frameHeight / 2));
 			typeText.draw();
 		}
+	}
+
+	public inline function updateAnims() {
+		animation.stop();
+		animation.remove('scroll');
+		animation.addByPrefix('scroll', MultikeyUtil.getNoteAnimation(this.strumLine.keyCount, this.fullID % this.strumLine.keyCount, 0));
+		animation.play('scroll', true);
 	}
 }

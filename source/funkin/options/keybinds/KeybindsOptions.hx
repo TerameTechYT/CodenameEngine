@@ -30,7 +30,7 @@ class KeybindsOptions extends MusicBeatSubstate {
 
 	public var categories:Array<ControlsCategory> = [];
 	public static var defaultCategories:Array<ControlsCategory> = [
-		{
+		/*{
 			name: "category.notes",
 			settings: [
 				{
@@ -58,7 +58,7 @@ class KeybindsOptions extends MusicBeatSubstate {
 					control: 'NOTE_RIGHT'
 				},
 			]
-		},
+		},*/
 		{
 			name: "category.ui",
 			settings: [

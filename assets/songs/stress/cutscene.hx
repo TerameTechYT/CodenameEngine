@@ -13,13 +13,13 @@ function create() {
 	game.persistentUpdate = true;
 
 	game.gf.visible = false;
-	gf = new Character(game.gf.x + game.gf.globalOffset.x - 115, game.gf.y + game.gf.globalOffset.y + 85, "gf-tankmen");
+	gf = new Character(null, game.gf.x + game.gf.globalOffset.x - 115, game.gf.y + game.gf.globalOffset.y + 85, "gf-tankmen");
 	gf.scrollFactor.set(0.95, 0.95);
 	gf.playAnim("dance-cutscene");
 	game.insert(game.members.indexOf(game.gf) + 1, gf);
 
 	game.boyfriend.visible = false;
-	bf = new Character(game.boyfriend.x + game.boyfriend.globalOffset.x, game.boyfriend.y + game.boyfriend.globalOffset.y - 350, "boyfriend", true);
+	bf = new Character(null, game.boyfriend.x + game.boyfriend.globalOffset.x, game.boyfriend.y + game.boyfriend.globalOffset.y - 350, "boyfriend", true);
 	bf.scrollFactor.set(0.95, 0.95);
 	game.insert(game.members.indexOf(game.boyfriend) + 1, bf);
 

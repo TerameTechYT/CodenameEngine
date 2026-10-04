@@ -75,7 +75,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (__cancelDefault = event.cancelled)
 			return;
 
-		character = new Character(x, y, characterName, player);
+		character = new Character(null,x, y, characterName, player);
 		character.danceOnBeat = false;
 		character.playAnim('firstDeath');
 		add(character);

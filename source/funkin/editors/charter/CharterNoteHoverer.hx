@@ -20,14 +20,15 @@ class CharterNoteHoverer extends CharterNote {
 				if ((__mousePos.x > 0 && __mousePos.x < Charter.instance.strumLines.totalKeyCount * 40 && inBoundsY) && showHoverer) {
 					step = CoolUtil.bound(FlxG.keys.pressed.SHIFT ? ((__mousePos.y-20) / 40) : Charter.instance.quantStep(__mousePos.y/40), 0, Charter.instance.__endStep-1);
 					id = Math.floor(__mousePos.x / 40); y = step * 40; x = id * 40; visible = true; sustainSpr.visible = typeVisible = false;
-					if (!noDefaultAnims)
-						angle = switch(animation.curAnim.curFrame = ((id - Charter.instance.strumLines.getStrumlineFromID(id).startingID) % 4)) {
-							case 0: -90;
-							case 1: 180;
-							case 2: 0;
-							case 3: 90;
-							default: 0; // how is that even possible
-						};
+					updatePos(step, id, 0, 0, Charter.instance.strumLines.getStrumlineFromID(id));
+					// if (!noDefaultAnims)
+					// 	angle = switch(animation.curAnim.curFrame = ((id - Charter.instance.strumLines.getStrumlineFromID(id).startingID) % 4)) {
+					// 		case 0: -90;
+					// 		case 1: 180;
+					// 		case 2: 0;
+					// 		case 3: 90;
+					// 		default: 0; // how is that even possible
+					// 	};
 				} else
 					visible = false;
 			case NOTE_DRAG:
@@ -78,21 +79,21 @@ class CharterNoteHoverer extends CharterNote {
 							origin.set(draggingNote.origin.x, draggingNote.origin.y);
 							frameOffset.set(draggingNote.frameOffset.x, draggingNote.frameOffset.y);
 							color = draggingNote.color;
-							if (!draggingNote.noDefaultAnims) {
-								frame = __lastFrame;
-								angle = switch(animation.curAnim.curFrame = (draggingNote.id % 4)) {
-									case 0: -90;
-									case 1: 180;
-									case 2: 0;
-									case 3: 90;
-									default: 0; // how is that even possible
-								};
-							} else {
-								frame = draggingNote.frame;
-							}
+							// if (!draggingNote.noDefaultAnims) {
+							// 	frame = __lastFrame;
+							// 	angle = switch(animation.curAnim.curFrame = (draggingNote.id % 4)) {
+							// 		case 0: -90;
+							// 		case 1: 180;
+							// 		case 2: 0;
+							// 		case 3: 90;
+							// 		default: 0; // how is that even possible
+							// 	};
+							// } else {
+							// 	frame = draggingNote.frame;
+							// }
 
 							sustainSpr.scale.set(10, (40 * (draggingNote.susLength-1)) + (height/2));
-							sustainSpr.color = draggingNote.noDefaultAnims ? draggingNote.sustainSpr.color : CharterNote.colors[animation.curAnim.curFrame];
+							// sustainSpr.color = draggingNote.noDefaultAnims ? draggingNote.sustainSpr.color : CharterNote.colors[animation.curAnim.curFrame];
 							sustainSpr.updateHitbox(); sustainSpr.alpha = alpha; sustainSpr.follow(this, 15, 20);
 							sustainSpr.exists = draggingNote.susLength != 0;
 

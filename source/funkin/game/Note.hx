@@ -168,26 +168,9 @@ class Note extends FlxSprite
 				default:
 					frames = Paths.getFrames(event.noteSprite);
 
-					switch(event.strumID % 4) {
-						case 0:
-							animation.addByPrefix('scroll', 'purple0');
-							animation.addByPrefix('hold', 'purple hold piece');
-							animation.addByPrefix("holdend", "pruple end hold");
-							if (animation.exists("holdend") != true) // null or false
-								animation.addByPrefix('holdend', 'purple hold end');
-						case 1:
-							animation.addByPrefix('scroll', 'blue0');
-							animation.addByPrefix('hold', 'blue hold piece');
-							animation.addByPrefix('holdend', 'blue hold end');
-						case 2:
-							animation.addByPrefix('scroll', 'green0');
-							animation.addByPrefix('hold', 'green hold piece');
-							animation.addByPrefix('holdend', 'green hold end');
-						case 3:
-							animation.addByPrefix('scroll', 'red0');
-							animation.addByPrefix('hold', 'red hold piece');
-							animation.addByPrefix('holdend', 'red hold end');
-					}
+					animation.addByPrefix('scroll', MultikeyUtil.getNoteAnimation(strumLine.data.keyCount, noteData.id, 0));
+					animation.addByPrefix('hold', MultikeyUtil.getNoteAnimation(strumLine.data.keyCount, noteData.id, 1));
+					animation.addByPrefix("holdend", MultikeyUtil.getNoteAnimation(strumLine.data.keyCount, noteData.id, 2));
 
 					scale.set(event.noteScale, event.noteScale);
 					antialiasing = true;
@@ -213,7 +196,7 @@ class Note extends FlxSprite
 		}
 
 		if (PlayState.instance != null) {
-			PlayState.instance.splashHandler.getSplashGroup(splash);
+			PlayState.instance.splashHandler.getSplashGroup(splash, event.note.strumLine.members.length);
 			PlayState.instance.gameAndCharsEvent("onPostNoteCreation", event);
 		}
 	}

@@ -22,7 +22,7 @@ class UIDebugState extends UIState {
 		bg.scrollFactor.set();
 		add(bg);
 
-		var gf = new Character(0, 0, "gf");
+		var gf = new Character(null, 0, 0, "gf");
 		gf.dance();
 		add(gf);
 

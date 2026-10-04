@@ -16,9 +16,9 @@ class SplashHandler extends FlxTypedGroup<Splash> {
 	 * Returns a group of splashes, and creates it if it doesn't exist.
 	 * @param path Path to the splashes XML (`Paths.xml('splashes/splash')`)
 	 */
-	public function getSplashGroup(name:String) {
+	public function getSplashGroup(name:String, size:Int) {
 		if (!grpMap.exists(name)) {
-			var grp = new SplashGroup(Paths.xml('splashes/$name'));
+			var grp = new SplashGroup(Paths.xml('splashes/$name'), size);
 			grpMap.set(name, grp);
 		}
 		return grpMap.get(name);
@@ -41,7 +41,7 @@ class SplashHandler extends FlxTypedGroup<Splash> {
 
 	var __grp:SplashGroup;
 	public function showSplash(name:String, strum:Strum) {
-		__grp = getSplashGroup(name);
+		__grp = getSplashGroup(name, strum.strumLine.members.length - 1);
 
 		var event = EventManager.get(SplashShowEvent).recycle(name, __grp.showOnStrum(strum), strum, __grp);
 		event = PlayState.instance.gameAndCharsEvent("onSplashShown", event);
@@ -49,8 +49,7 @@ class SplashHandler extends FlxTypedGroup<Splash> {
 		if (!event.cancelled)
 			add(event.splash);
 
-		// max 8 rendered splashes
-		while(members.length > Flags.MAX_SPLASHES)
+		while(members.length > strum.strumLine.members.length - 1)
 			remove(members[0], true);
 	}
 }

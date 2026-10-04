@@ -2,30 +2,49 @@ package funkin.editors.charter;
 
 import funkin.game.Note;
 
-class CharterPreviewStrumLine extends FlxTypedGroup<FlxSprite>
-{
-	public function new(x:Float, y:Float, scale:Float, spacing:Float, keyCount:Int, scrollSpeed:Float){
+class CharterPreviewStrumLine extends FlxTypedGroup<FlxSprite> {
+	public var keyCount:Int;
+
+	public function new(x:Float, y:Float, scale:Float, spacing:Float, keyCount:Int, scrollSpeed:Float) {
 		super();
+
+		this.keyCount = keyCount;
 		updatePos(x, y, scale, spacing, keyCount, scrollSpeed);
 	}
 
 	private var note:FlxSprite;
 
-	public function generateStrums(x:Float, y:Float, scale:Float, spacing:Float, keyCount:Int, scrollSpeed:Float){
-		for (member in members){
+	public function generateStrums(x:Float, y:Float, scale:Float, spacing:Float, keyCount:Int, scrollSpeed:Float) {
+		this.keyCount = keyCount;
+
+		for (member in members) {
 			member.destroy();
 		}
 		clear();
-			
-		var strumAnimPrefix = ["left", "down", "up", "right"];
-		for (i in 0...keyCount){
+
+		// var strumAnimPrefix = ["left", "down", "up", "right"];
+		// for (i in 0...keyCount){
+		// 	var strum = new FlxSprite();
+		// 	strum.frames = Paths.getFrames("game/notes/default");
+		// 	strum.setGraphicSize(Std.int((strum.width * Flags.DEFAULT_NOTE_SCALE) * scale));
+		// 	strum.updateHitbox();
+
+		// 	var animPrefix = strumAnimPrefix[i % 4];
+		// 	strum.animation.addByPrefix('static', 'arrow${animPrefix.toUpperCase()}');
+		// 	strum.animation.play('static');
+		// 	strum.alpha = 0.4;
+		// 	add(strum);
+		// }
+
+		for (i in 0...keyCount) {
 			var strum = new FlxSprite();
 			strum.frames = Paths.getFrames("game/notes/default");
-			strum.setGraphicSize(Std.int((strum.width * Flags.DEFAULT_NOTE_SCALE) * scale));
+			strum.setGraphicSize(Std.int((strum.width * 0.7) * scale));
 			strum.updateHitbox();
 
-			var animPrefix = strumAnimPrefix[i % 4];
-			strum.animation.addByPrefix('static', 'arrow${animPrefix.toUpperCase()}');
+			strum.animation.addByPrefix('static', MultikeyUtil.getStrumAnimation(keyCount, i, 0));
+			strum.animation.addByPrefix('confirm', MultikeyUtil.getStrumAnimation(keyCount, i, 1), 24, false);
+			strum.animation.addByPrefix('pressed', MultikeyUtil.getStrumAnimation(keyCount, i, 2), 24, false);
 			strum.animation.play('static');
 			strum.alpha = 0.4;
 			add(strum);
@@ -35,8 +54,8 @@ class CharterPreviewStrumLine extends FlxTypedGroup<FlxSprite>
 		note.frames = Paths.getFrames("game/notes/default");
 		note.setGraphicSize(Std.int((note.width * Flags.DEFAULT_NOTE_SCALE) * scale));
 		note.updateHitbox();
-		note.animation.addByPrefix('purple', 'purple0');
-		note.animation.play('purple');
+		note.animation.addByPrefix('left', 'left0');
+		note.animation.play('left');
 		note.alpha = 0.4;
 		add(note);
 	}
@@ -44,19 +63,20 @@ class CharterPreviewStrumLine extends FlxTypedGroup<FlxSprite>
 	var noteTime:Float = FlxG.initialHeight;
 	var scroll:Float = 1.0;
 
-	public function updatePos(x:Float, y:Float, scale:Float, spacing:Float, keyCount:Int, scrollSpeed:Float){
-		if (members.length-1 != keyCount) //strumline + note
+	public function updatePos(x:Float, y:Float, scale:Float, spacing:Float, keyCount:Int, scrollSpeed:Float) {
+		this.keyCount = keyCount;
+
+		if (members.length - 1 != keyCount) // strumline + note
 			generateStrums(x, y, scale, spacing, keyCount, scrollSpeed);
 
-		for (i in 0...keyCount){
+		for (i in 0...keyCount) {
 			var strum = members[i];
 
 			strum.x = CoolUtil.fpsLerp(strum.x, x + (Note.swagWidth * scale * spacing * i), 0.2);
-			strum.y = CoolUtil.fpsLerp(strum.y, y + (Note.swagWidth*0.5) - (Note.swagWidth * scale * 0.5), 0.2);
+			strum.y = CoolUtil.fpsLerp(strum.y, y + (Note.swagWidth * 0.5) - (Note.swagWidth * scale * 0.5), 0.2);
 			strum.scale.x = strum.scale.y = CoolUtil.fpsLerp(strum.scale.x, Flags.DEFAULT_NOTE_SCALE * scale, 0.2);
 			strum.updateHitbox();
 		}
-
 
 		scroll = CoolUtil.fpsLerp(scroll, scrollSpeed, 0.2);
 		noteTime -= FlxG.elapsed * scroll * 1000 * 0.45;

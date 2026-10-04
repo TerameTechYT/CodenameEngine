@@ -23,7 +23,7 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 	 * Creates a new Splash group
 	 * @param path Path to the splash data (xml)
 	 */
-	public function new(path:String) {
+	public function new(path:String, size:Int) {
 		super();
 
 		try {
@@ -32,7 +32,7 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 			if (!xml.has.sprite) throw "The <splash> element requires a sprite attribute.";
 			var splash = createSplash(xml.att.sprite);
 			setupAnims(xml, splash);
-			pregenerateSplashes(splash);
+			pregenerateSplashes(splash, size - 1);
 			add(splash);
 
 			// immediately draw once and put image in GPU to prevent freezes
@@ -43,7 +43,7 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 			Logs.error('Couldn\'t parse splash data for "${path}": ${e.toString()}');
 			valid = false;
 		}
-		maxSize = Flags.MAX_SPLASHES;
+		maxSize = size;
 	}
 
 	var _scale:Float = 1.0;
@@ -73,8 +73,8 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 			}
 		}
 
-		// if (animationNames.length <= 0)
-		//		animationNames.push([]);
+		if (animationNames.length <= 0)
+				animationNames.push([]);
 
 		for(anim in xml.nodes.anim) {
 			if (!anim.has.name) continue;
@@ -84,6 +84,7 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 				a.push(anim.att.name);
 			}
 		}
+
 		splash.animation.finishCallback = function(name:String) {
 			splash.active = splash.visible = false;
 			splash.strum = null;
@@ -91,10 +92,11 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 		};
 	}
 
-	function pregenerateSplashes(splash:Splash) {
+	function pregenerateSplashes(splash:Splash, size:Int) {
 		// TODO: Fix a crash somewhere here https://github.com/CodenameCrew/CodenameEngine/pull/963
-		for (i in 0...Flags.MAX_SPLASHES - 1) {
+		for (i in 0...size) {
 			var spr = Splash.copyFrom(splash);
+			spr.ID = i;
 			spr.animation.finishCallback = function(name:String) {
 				spr.active = spr.visible = false;
 				spr.strum = null;
@@ -104,12 +106,18 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 		}
 	}
 
-	public function getSplashAnim(id:Int):String {
-		if (animationNames.length <= 0) return null;
-		id %= animationNames.length;
-		var animNames = animationNames[id];
-		if (animNames == null || animNames.length <= 0) return null;
-		return animNames[FlxG.random.int(0, animNames.length - 1)];
+	// public function getSplashAnim(id:Int):String {
+	// 	if (animationNames.length <= 0) return null;
+	// 	id %= animationNames.length;
+	// 	var animNames = animationNames[id];
+	// 	if (animNames == null || animNames.length <= 0) return null;
+	// 	return animNames[FlxG.random.int(0, animNames.length - 1)];
+	// }
+
+	public function getSplashAnim(size:Int, id:Int):String {
+		// return animationNames[size][id][FlxG.random.int(0, animationNames[size][id].length - 1)];
+		var id = MultikeyUtil.getSplashAnimation(size, id);
+		return animationNames[id][FlxG.random.int(0, animationNames[id].length - 1)];
 	}
 
 	var __splash:Splash;
@@ -128,7 +136,7 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 		__splash.cameras = strum.lastDrawCameras;
 		__splash.setPosition(strum.x + 0.5 * (strum.width - __splash.width), strum.y + 0.5 * (strum.height - __splash.height));
 		__splash.active = __splash.visible = true;
-		__splash.playAnim(getSplashAnim(strum.ID), true);
+		__splash.playAnim(getSplashAnim(strum.strumLine.data.keyCount, strum.ID), true);
 		__splash.scrollFactor.set(strum.scrollFactor.x, strum.scrollFactor.y);
 
 		return __splash;

@@ -397,17 +397,21 @@ class StrumLine extends FlxTypedGroup<Strum> {
 
 		if (!event.cancelled) {
 			babyArrow.frames = Paths.getFrames(event.sprite);
-			babyArrow.animation.addByPrefix('green', 'arrowUP');
-			babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
-			babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
-			babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
+			// babyArrow.animation.addByPrefix('green', 'arrowUP');
+			// babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
+			// babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
+			// babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
+			
+			babyArrow.animation.addByPrefix('static', MultikeyUtil.getStrumAnimation(data.keyCount, i, 0));
+			babyArrow.animation.addByPrefix('confirm', MultikeyUtil.getStrumAnimation(data.keyCount, i, 1), 24, false);
+			babyArrow.animation.addByPrefix('pressed', MultikeyUtil.getStrumAnimation(data.keyCount, i, 2), 24, false);
 
 			babyArrow.antialiasing = true;
 			babyArrow.setGraphicSize(Std.int((babyArrow.width * Flags.DEFAULT_NOTE_SCALE) * strumScale));
 
-			babyArrow.animation.addByPrefix('static', 'arrow${event.animPrefix.toUpperCase()}');
-			babyArrow.animation.addByPrefix('pressed', '${event.animPrefix} press', 24, false);
-			babyArrow.animation.addByPrefix('confirm', '${event.animPrefix} confirm', 24, false);
+			// babyArrow.animation.addByPrefix('static', 'arrow${event.animPrefix.toUpperCase()}');
+			// babyArrow.animation.addByPrefix('pressed', '${event.animPrefix} press', 24, false);
+			// babyArrow.animation.addByPrefix('confirm', '${event.animPrefix} confirm', 24, false);
 		}
 
 		babyArrow.cpu = cpu;
