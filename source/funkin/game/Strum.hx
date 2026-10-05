@@ -117,13 +117,13 @@ class Strum extends FlxSprite {
 	// }
 
 	@:dox(hide) public inline function __getPressed(strumLine:StrumLine):Bool {
-		return getPressed != null ? getPressed(strumLine) : ControlsUtil.getPressed(strumLine.controls, strumLine.data.keyCount+"k"+ID);
+		return getPressed != null ? getPressed(strumLine) : ControlsUtil.getPressed(strumLine.controls, strumLine.keyCount+"k"+ID);
 	}
 	@:dox(hide) public inline function __getJustPressed(strumLine:StrumLine) {
-		return getJustPressed != null ? getJustPressed(strumLine) : ControlsUtil.getJustPressed(strumLine.controls, strumLine.data.keyCount+"k"+ID);
+		return getJustPressed != null ? getJustPressed(strumLine) : ControlsUtil.getJustPressed(strumLine.controls, strumLine.keyCount+"k"+ID);
 	}
 	@:dox(hide) public inline function __getJustReleased(strumLine:StrumLine) {
-		return getJustReleased != null ? getJustReleased(strumLine) : ControlsUtil.getJustReleased(strumLine.controls, strumLine.data.keyCount+"k"+ID);
+		return getJustReleased != null ? getJustReleased(strumLine) : ControlsUtil.getJustReleased(strumLine.controls, strumLine.keyCount+"k"+ID);
 	}
 
 	/**

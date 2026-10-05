@@ -68,7 +68,7 @@ class FramerateCounter extends Sprite {
 
 		var lowest = history[0];
 		for (f in history) if (f < lowest || f == 0) lowest = f;
-		lowFPS.text = "/1%: " + Math.round(lowest);
+		lowFPS.text = "/ 1%: " + Math.round(lowest);
 
 		fpsNum.text = Std.string(Math.round(lastFPS));
 		lastUpdateTime = frameCount = 0;

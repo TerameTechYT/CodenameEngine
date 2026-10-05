@@ -177,7 +177,7 @@ class CharterStrumlineScreen extends UISubstateWindow {
 		add(vocalsSuffixDropDown);
 		addLabelOn(vocalsSuffixDropDown, TU.translate("charterStrumLine.vocalSuffix"));
 
-		keyCountStepper = new UINumericStepper(stagePositionDropdown.x, vocalsSuffixDropDown.y, strumLine.keyCount != null ? strumLine.keyCount : 4, 1, 0, 1, 1000, 84);
+		keyCountStepper = new UINumericStepper(stagePositionDropdown.x, vocalsSuffixDropDown.y, strumLine.keyCount != null ? strumLine.keyCount : 4, 1, 0, 1, MultikeyUtil.multikeyMax, 84);
 		add(keyCountStepper);
 		addLabelOn(keyCountStepper, TU.translate("charterStrumLine.keyCount"));
 

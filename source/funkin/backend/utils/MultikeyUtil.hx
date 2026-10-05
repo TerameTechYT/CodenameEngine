@@ -6,6 +6,7 @@ import haxe.xml.Access;
 
 final class MultikeyUtil {
 	public static var multikeyLoaded:Bool;
+	public static var multikeyMax:Int;
 	public static var multikeySingAnimations:Array<Array<Int>> = [];
 	public static var multikeySplashAnimations:Array<Array<Int>> = [];
 	public static var multikeyStrumAnimations:Array<Array<Array<String>>> = [];
@@ -19,7 +20,7 @@ final class MultikeyUtil {
 		for (lib in ModsFolder.getLoadedModsLibs()) {
 			var modName = lib.modName;
 			var folder = Paths.xml('config/multikey/LIB_$modName');
-			Logs.trace(folder);
+			// Logs.trace(folder);
 			if (Assets.exists(folder))
 				filePaths.push(folder);
 		}
@@ -31,7 +32,7 @@ final class MultikeyUtil {
 				xml = Xml.parse(Assets.getText(source));
 			}
 			catch (e) {
-				Logs.trace('Error while parsing controls.xml: ${Std.string(e)}', ERROR);
+				Logs.trace('Error while parsing multikey.xml: ${Std.string(e)}', ERROR);
 			}
 
 			if (xml != null) {
@@ -45,7 +46,9 @@ final class MultikeyUtil {
 	public static function loadMultikeyData(xml:Xml) {
 		for (keyData in xml.elementsNamed("keyData")) {
 			for (keyGroup in keyData.elementsNamed("keyGroup")) {
-				var keyCount = Std.parseInt(keyGroup.get("id")) - 1;
+				var keyCount = Std.parseInt(keyGroup.get("id"));
+				if (multikeyMax < keyCount)
+					multikeyMax = keyCount;
 
 				multikeyStrumAnimations.push([]);
 				multikeyNoteAnimations.push([]);
@@ -54,19 +57,19 @@ final class MultikeyUtil {
 
 				for (key in keyGroup.elementsNamed("key")) {
 					for (strum in key.elementsNamed("strum")) {
-						multikeyStrumAnimations[keyCount].push([strum.get("static"), strum.get("confirm"), strum.get("press")]);
+						multikeyStrumAnimations[keyCount - 1].push([strum.get("static"), strum.get("confirm"), strum.get("press")]);
 					}
 
 					for (note in key.elementsNamed("note")) {
-						multikeyNoteAnimations[keyCount].push([note.get("static"), note.get("sustain"), note.get("sustainEnd")]);
+						multikeyNoteAnimations[keyCount - 1].push([note.get("static"), note.get("sustain"), note.get("sustainEnd")]);
 					}
 
 					for (splash in key.elementsNamed("splash")) {
-						multikeySplashAnimations[keyCount].push(Std.parseInt(splash.get("id")));
+						multikeySplashAnimations[keyCount - 1].push(Std.parseInt(splash.get("id")));
 					}
 
 					for (direction in key.elementsNamed("direction")) {
-						multikeySingAnimations[keyCount].push(Std.parseInt(direction.get("id")));
+						multikeySingAnimations[keyCount - 1].push(Std.parseInt(direction.get("id")));
 					}
 				}
 			}

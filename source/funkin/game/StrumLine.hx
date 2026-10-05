@@ -58,6 +58,10 @@ class StrumLine extends FlxTypedGroup<Strum> {
 	 * Chart JSON data assigned to this StrumLine (Codename format)
 	 */
 	public var data:ChartStrumLine = null;
+	/*
+	 * Key count
+	 */
+	public var keyCount(get, default):Int;
 	/**
 	 * Whenever Ghost Tapping is enabled.
 	 */
@@ -100,6 +104,8 @@ class StrumLine extends FlxTypedGroup<Strum> {
 	private inline function set_ghostTapping(b:Bool):Bool
 		return this.ghostTapping = b;
 
+	private function get_keyCount()
+		return data.keyCount != null ? data.keyCount : Flags.DEFAULT_STRUM_AMOUNT;
 
 	private var startingPos:FlxPoint = FlxPoint.get(0,0);
 	/**

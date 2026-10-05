@@ -165,6 +165,7 @@ class MusicBeatState extends FlxState implements IBeatCancellableReceiver
 		}
 
 		if (/*subState == null && */(ALLOW_DEV_RELOAD && controls.DEV_RELOAD)) {
+			MultikeyUtil.multikeyLoaded = false;
 			Logs.trace("Reloading Current State...", INFO, YELLOW);
 			FlxG.resetState();
 		}

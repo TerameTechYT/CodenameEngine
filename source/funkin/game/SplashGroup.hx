@@ -136,7 +136,7 @@ class SplashGroup extends FlxTypedGroup<Splash> {
 		__splash.cameras = strum.lastDrawCameras;
 		__splash.setPosition(strum.x + 0.5 * (strum.width - __splash.width), strum.y + 0.5 * (strum.height - __splash.height));
 		__splash.active = __splash.visible = true;
-		__splash.playAnim(getSplashAnim(strum.strumLine.data.keyCount, strum.ID), true);
+		__splash.playAnim(getSplashAnim(strum.strumLine.keyCount, strum.ID), true);
 		__splash.scrollFactor.set(strum.scrollFactor.x, strum.scrollFactor.y);
 
 		return __splash;

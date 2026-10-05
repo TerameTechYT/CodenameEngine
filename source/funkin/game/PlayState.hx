@@ -1078,11 +1078,13 @@ class PlayState extends MusicBeatState
 					ease: FlxEase.cubeInOut,
 					onComplete: function(twn:FlxTween)
 					{
-						sprite.destroy();
 						remove(sprite, true);
+						sprite.kill();
+						sprite.destroy();
 					}
 				});
 			}
+			
 			if (event.soundPath != null) {
 				var sfx = event.soundPath;
 				if (!Assets.exists(sfx)) sfx = Paths.sound(sfx);

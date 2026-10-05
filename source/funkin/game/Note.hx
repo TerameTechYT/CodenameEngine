@@ -168,9 +168,9 @@ class Note extends FlxSprite
 				default:
 					frames = Paths.getFrames(event.noteSprite);
 
-					animation.addByPrefix('scroll', MultikeyUtil.getNoteAnimation(strumLine.data.keyCount, noteData.id, 0));
-					animation.addByPrefix('hold', MultikeyUtil.getNoteAnimation(strumLine.data.keyCount, noteData.id, 1));
-					animation.addByPrefix("holdend", MultikeyUtil.getNoteAnimation(strumLine.data.keyCount, noteData.id, 2));
+					animation.addByPrefix('scroll', MultikeyUtil.getNoteAnimation(strumLine.keyCount, noteData.id, 0));
+					animation.addByPrefix('hold', MultikeyUtil.getNoteAnimation(strumLine.keyCount, noteData.id, 1));
+					animation.addByPrefix("holdend", MultikeyUtil.getNoteAnimation(strumLine.keyCount, noteData.id, 2));
 
 					scale.set(event.noteScale, event.noteScale);
 					antialiasing = true;

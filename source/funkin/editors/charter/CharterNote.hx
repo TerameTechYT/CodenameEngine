@@ -175,7 +175,7 @@ class CharterNote extends UISprite implements ICharterSelectable {
 	var __selected:Bool = false;
 
 	var __prevKeyCount:Int = 4;
-	var __prevId:Int = 4;
+	var __prevId:Int;
 
 	public override function update(elapsed:Float) {
 		super.update(elapsed);

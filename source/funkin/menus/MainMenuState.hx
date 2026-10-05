@@ -31,8 +31,8 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-
 		super.create();
+		curSelected = 0;
 
 		DiscordUtil.call("onMenuLoaded", ["Main Menu"]);
 
